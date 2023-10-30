@@ -10,7 +10,7 @@ public class StudentController {
 
     @GetMapping("/items")
     public String listOfItems() {
-        return "student-items";
+        return "student/items";
     }
 
 
