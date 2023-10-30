@@ -1,13 +1,13 @@
-package com.system.reservation.reservationsystem;
+package com.system.reservation.online;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReservationSystemApplication {
+public class ReservationSystem {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReservationSystemApplication.class, args);
+		SpringApplication.run(ReservationSystem.class, args);
 	}
 
 }
