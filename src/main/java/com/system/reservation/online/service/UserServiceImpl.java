@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
         Role role;
-        Optional<Role> result = roleRepository.findByName("ROLE_ADMIN");
+        Optional<Role> result = roleRepository.findByName("ROLE_STUDENT");
 
         if (result.isPresent()) {
             role = result.get();
