@@ -36,6 +36,7 @@ public class AuthControllerSecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/index/**").permitAll()
                         .requestMatchers("/register").permitAll()
+                        .requestMatchers("/default").hasAnyRole("ADMIN", "STUDENT")
                         .requestMatchers("/users/**").hasRole("ADMIN")
                         .requestMatchers("/students/**").hasRole("STUDENT")
                         .requestMatchers("/admins/**").hasRole("ADMIN")
@@ -44,7 +45,7 @@ public class AuthControllerSecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/students/items")
+                        .defaultSuccessUrl("/default")
                         .permitAll()
                 )
                 .logout(logout -> logout
