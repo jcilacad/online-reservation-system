@@ -16,6 +16,9 @@ public class UserDto {
     private Long id;
 
     @NotEmpty
+    private String studentNumber;
+
+    @NotEmpty
     private String firstName;
 
     @NotEmpty
@@ -24,6 +27,8 @@ public class UserDto {
     @Email
     @NotEmpty(message = "Email should not be empty")
     private String email;
+
+    private String contactNumber;
 
     @NotEmpty(message = "Password should not be empty")
     private String password;
