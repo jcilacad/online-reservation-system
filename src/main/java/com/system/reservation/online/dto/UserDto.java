@@ -33,6 +33,6 @@ public class UserDto {
 
     private String contactNumber;
 
-    @NotEmpty(message = "Password should not be empty")
+//    @NotEmpty(message = "Password should not be empty")
     private String password;
 }

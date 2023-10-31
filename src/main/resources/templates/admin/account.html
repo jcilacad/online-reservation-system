@@ -49,9 +49,14 @@
 
 <div class="container" style="margin-top: 150px">
 
+
+
     <div class="d-flex">
         <div class="flex-grow-1"><h3>Accounts</h3></div>
+
         <div><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-account" data-bs-whatever="@getbootstrap">Add Account</button></div>
+
+
 
         <div class="modal fade" id="add-account" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -101,7 +106,9 @@
             </div>
         </div>
     </div>
-
+    <div th:if="${param.success}" class="alert alert-success my-3" role="alert">
+        Successfully registered account!
+    </div>
 
     <div class="container table-responsive" style="margin-top: 20px">
 
