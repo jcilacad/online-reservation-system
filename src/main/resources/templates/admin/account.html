@@ -72,6 +72,12 @@
                                 <input th:field="*{studentNumber}" type="text" class="form-control" id="dto-student-number">
                                 <p  th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"  class="text-danger"></p>
                             </div>
+
+                            <div class="mb-3">
+                                <label for="dto-email-address" class="col-form-label">Email address:</label>
+                                <input th:field="*{email}" type="email" class="form-control" id="dto-email-address">
+                                <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  class="text-danger"></p>
+                            </div>
                             <div class="mb-3">
                                 <label for="dto-first-name" class="col-form-label">First Name:</label>
                                 <input th:field="*{firstName}"  type="text" class="form-control" id="dto-first-name">

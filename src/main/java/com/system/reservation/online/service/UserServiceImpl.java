@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
         user.setStudentNumber(userDto.getStudentNumber());
         user.setEmail(userDto.getEmail());
         user.setContactNumber(userDto.getContactNumber());
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setPassword(passwordEncoder.encode(userDto.getStudentNumber()));
 
         Role role;
         Optional<Role> result = roleRepository.findByName("ROLE_STUDENT");
