@@ -21,8 +21,9 @@ public class AdminController {
 
         // Instantiate userDto for form
         UserDto user = new UserDto();
-        model.addAttribute("user", user);
-        
+        model.addAttribute("userDto", user);
+
         return "admin/account";
     }
+
 }
