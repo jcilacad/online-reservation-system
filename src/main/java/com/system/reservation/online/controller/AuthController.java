@@ -65,12 +65,16 @@ public class AuthController {
 
         if (isUserExists) {
             result.rejectValue("email", null, "Email already exists!");
+            System.out.println("exists");
         }
 
         if (result.hasErrors()) {
             model.addAttribute("user", user);
+            System.out.println("error");
             return "register";
         }
+
+        System.out.println("dito");
 
         userService.saveUser(user);
 

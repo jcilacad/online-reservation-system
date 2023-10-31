@@ -34,8 +34,10 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserDto userDto) {
 
         User user = new User();
-        user.setName(userDto.getFirstName() + " " + userDto.getLastName());
+        user.setName(userDto.getLastName().toUpperCase() + ", " + userDto.getFirstName().toUpperCase() + " " + userDto.getMiddleName().toUpperCase());
+        user.setStudentNumber(userDto.getStudentNumber());
         user.setEmail(userDto.getEmail());
+        user.setContactNumber(userDto.getContactNumber());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
         Role role;
