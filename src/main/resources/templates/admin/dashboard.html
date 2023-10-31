@@ -51,9 +51,11 @@
 
     <h1>Dashboard</h1>
     <div class="container-lg text-center mx-auto my-5 d-grid gap-3 d-md-block">
-            <button type="button" class="btn btn-light btn-lg border border-secondary">Accounts</button>
-            <button type="button" class="btn btn-light btn-lg border border-secondary">Items</button>
-            <button type="button" class="btn btn-light btn-lg border border-secondary">Transactions</button>
+        <a th:href="@{/admins/accounts}" type="button" class="btn btn-light btn-lg border border-secondary">Accounts
+        </a>
+            <a th:href="@{/admins/items}" type="button" class="btn btn-light btn-lg border border-secondary">Items</a>
+            <a th:href="@{/admins/transactions}" type="button" class="btn btn-light btn-lg border border-secondary">Transactions</a>
+            <a th:href="@{/admins/report}" type="button" class="btn btn-light btn-lg border border-secondary">Report</a>
     </div>
 
 </div>
