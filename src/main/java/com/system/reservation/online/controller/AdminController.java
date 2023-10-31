@@ -13,4 +13,10 @@ public class AdminController {
 
         return "admin/dashboard";
     }
+
+    @GetMapping("/accounts")
+    public String accounts() {
+
+        return "admin/account";
+    }
 }
