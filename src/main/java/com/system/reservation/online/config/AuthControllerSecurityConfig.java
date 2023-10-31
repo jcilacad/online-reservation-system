@@ -44,7 +44,7 @@ public class AuthControllerSecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/users")
+                        .defaultSuccessUrl("/admins/dashboard")
                         .permitAll()
                 )
                 .logout(logout -> logout
