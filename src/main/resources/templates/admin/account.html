@@ -158,7 +158,7 @@
                 <a class="page-link" th:href="@{/admins/accounts(currentPage=${currentPage + 1})}">Next</a>
             </li>
             <li class="page-item" th:classappend="${currentPage == users.totalPages - 1 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/admins/accounts(page=${users.totalPages - 1})}">Last</a>
+                <a class="page-link" th:href="@{/admins/accounts(currentPage=${users.totalPages - 1})}">Last</a>
             </li>
         </ul>
     </nav>
