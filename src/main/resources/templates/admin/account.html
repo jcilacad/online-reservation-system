@@ -131,9 +131,10 @@
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
-                <td th:text="${user.firstName}"></td>
-                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.studentNumber}"></td>
+                <td th:text="${user.name}"></td>
                 <td th:text="${user.email}"></td>
+                <td><button>View</button></td>
             </tr>
             </tbody>
         </table>

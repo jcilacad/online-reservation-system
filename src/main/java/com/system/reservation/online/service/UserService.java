@@ -12,9 +12,11 @@ public interface UserService {
 
     User findUserByEmail(String email);
 
-    List<UserDto> findAll();
+    List<UserDto> findAllDto();
 
     boolean isUserExists(UserDto user);
 
     boolean isUserAuthenticated(Authentication authentication);
+
+    List<User> findAll();
 }

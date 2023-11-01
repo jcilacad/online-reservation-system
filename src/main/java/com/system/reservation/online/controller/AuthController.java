@@ -2,7 +2,6 @@ package com.system.reservation.online.controller;
 
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.service.UserService;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +82,7 @@ public class AuthController {
     @GetMapping("/users")
     public String users(Model model) {
 
-        List<UserDto> userDtoList = userService.findAll();
+        List<UserDto> userDtoList = userService.findAllDto();
         model.addAttribute("users", userDtoList);
 
         return "users";
