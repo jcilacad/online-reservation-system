@@ -41,11 +41,16 @@ public class AdminController {
 
     @PostMapping("/register")
     public String addAccount(@Valid @ModelAttribute("userDto") UserDto userDto,
-                             Model model,
-                             BindingResult result) {
+                                                               BindingResult result,
+                                                               Model model) {
 
-        System.out.println("Submitted");
+        // Check if user exists
+        boolean isUserExists = userService.isUserExists(userDto);
 
+        if (isUserExists) {
+            result.rejectValue("email", null, "Email already exists!");
+        }
+        
         // Error handler if there's empty field
         if (result.hasErrors()) {
             model.addAttribute("userDto", userDto);

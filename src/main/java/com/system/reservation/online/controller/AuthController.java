@@ -60,25 +60,25 @@ public class AuthController {
         return "redirect:/users";
     }
 
-//    @PostMapping("/register")
-//    public String registration(@Valid @ModelAttribute("user") UserDto user, BindingResult result, Model model) {
-//
-//        boolean isUserExists = userService.isUserExists(user);
-//
-//        if (isUserExists) {
-//            result.rejectValue("email", null, "Email already exists!");
-//        }
-//
-//        if (result.hasErrors()) {
-//            model.addAttribute("user", user);
-//            return "register";
-//        }
-//
-//        userService.saveUser(user);
-//
-//        return "redirect:/register?success";
-//
-//    }
+    @PostMapping("/register")
+    public String registration(@Valid @ModelAttribute("user") UserDto user, BindingResult result, Model model) {
+
+        boolean isUserExists = userService.isUserExists(user);
+
+        if (isUserExists) {
+            result.rejectValue("email", null, "Email already exists!");
+        }
+
+        if (result.hasErrors()) {
+            model.addAttribute("user", user);
+            return "register";
+        }
+
+        userService.saveUser(user);
+
+        return "redirect:/register?success";
+
+    }
 
     @GetMapping("/users")
     public String users(Model model) {
