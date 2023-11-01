@@ -5,13 +5,12 @@ import com.system.reservation.online.entity.User;
 import com.system.reservation.online.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,16 +32,20 @@ public class AdminController {
     }
 
     @GetMapping("/accounts")
-    public String accounts(Model model) {
+    public String accounts(Model model,
+                           @RequestParam(defaultValue = "0") Integer currentPage) {
+
 
         // Instantiate userDto for form
         UserDto user = new UserDto();
 
         // Get the list of users
-        List<User> users = userService.findAll();
+//        List<User> users = userService.findAll();
+        Page<User> users = userService.findAllPaginated(currentPage, 10);
 
         model.addAttribute("users", users);
         model.addAttribute("userDto", user);
+        model.addAttribute("currentPage", currentPage);
 
         return "admin/account";
     }
