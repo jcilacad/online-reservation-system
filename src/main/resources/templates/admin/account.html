@@ -144,21 +144,21 @@
 
     <nav aria-label="Page navigation">
         <ul class="pagination">
-            <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/admins/accounts(currentPage=0)}">First</a>
+            <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/admins/accounts(page=0)}">First</a>
             </li>
-            <li class="page-item" th:classappend="${currentPage == 0 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/admins/accounts(currentPage=${currentPage - 1})}">Previous</a>
+            <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/admins/accounts(page=${page - 1})}">Previous</a>
             </li>
             <li class="page-item" th:each="i : ${#numbers.sequence(0, users.totalPages - 1)}"
-                th:classappend="${currentPage == i ? 'active' : ''}">
-                <a class="page-link" th:href="@{/admins/accounts(currentPage=${i})}" th:text="${i + 1}"></a>
+                th:classappend="${page == i ? 'active' : ''}">
+                <a class="page-link" th:href="@{/admins/accounts(page=${i})}" th:text="${i + 1}"></a>
             </li>
-            <li class="page-item" th:classappend="${currentPage == users.totalPages - 1 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/admins/accounts(currentPage=${currentPage + 1})}">Next</a>
+            <li class="page-item" th:classappend="${page == users.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/admins/accounts(page=${page + 1})}">Next</a>
             </li>
-            <li class="page-item" th:classappend="${currentPage == users.totalPages - 1 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/admins/accounts(currentPage=${users.totalPages - 1})}">Last</a>
+            <li class="page-item" th:classappend="${page == users.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/admins/accounts(page=${users.totalPages - 1})}">Last</a>
             </li>
         </ul>
     </nav>

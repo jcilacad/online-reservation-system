@@ -33,7 +33,7 @@ public class AdminController {
 
     @GetMapping("/accounts")
     public String accounts(Model model,
-                           @RequestParam(defaultValue = "0") Integer currentPage) {
+                           @RequestParam(defaultValue = "0") Integer page) {
 
 
         // Instantiate userDto for form
@@ -41,11 +41,11 @@ public class AdminController {
 
         // Get the list of users
 //        List<User> users = userService.findAll();
-        Page<User> users = userService.findAllPaginated(currentPage, 10);
+        Page<User> users = userService.findAllPaginated(page, 10);
 
         model.addAttribute("users", users);
         model.addAttribute("userDto", user);
-        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("page", page);
 
         return "admin/account";
     }
