@@ -39,7 +39,7 @@ public class AdminController {
         return "admin/account";
     }
 
-    @PostMapping("/accounts")
+    @PostMapping("/register")
     public String addAccount(@Valid @ModelAttribute("userDto") UserDto userDto,
                              Model model,
                              BindingResult result) {
