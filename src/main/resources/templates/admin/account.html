@@ -90,7 +90,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="dto-last-name" class="col-form-label">Last Name:</label>
-                                <input th:fields="*{lastName}"  type="text" class="form-control" id="dto-last-name">
+                                <input th:field="*{lastName}"  type="text" class="form-control" id="dto-last-name">
                                 <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
                             </div>
                             <div class="mb-3">
