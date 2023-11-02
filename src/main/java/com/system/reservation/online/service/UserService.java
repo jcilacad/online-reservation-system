@@ -25,5 +25,7 @@ public interface UserService {
 
     User findByStudentId(Long studentId);
 
+    UserDto mapUserToDto(User user);
+
     Page<User> findAllPaginated(Integer currentPage, Integer pageSize);
 }

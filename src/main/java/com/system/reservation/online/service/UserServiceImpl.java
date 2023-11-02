@@ -90,7 +90,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll(PageRequest.of(currentPage, pageSize));
     }
 
-    private UserDto mapUserToDto(User user) {
+    @Override
+    public UserDto mapUserToDto(User user) {
 
         UserDto userDto = new UserDto();
         String[] name = user.getName().split(" ");

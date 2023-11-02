@@ -82,8 +82,10 @@ public class AdminController {
 
         // Find student by id
         User student = userService.findByStudentId(studentId);
+        UserDto studentDto = userService.mapUserToDto(student);
 
         model.addAttribute("student", student);
+        model.addAttribute("studentDto", studentDto);
 
         return "admin/student-details";
     }

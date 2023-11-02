@@ -74,36 +74,36 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST">
+                        <form th:object="${studentDto}" method="POST">
                             <div class="mb-3">
-                                <label for="dto-student-number" class="col-form-label">Student Number:</label>
-                                <input type="text" class="form-control" id="dto-student-number">
-                                <!--                                <p  th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"  class="text-danger"></p>-->
+                                <label for="studentNumber" class="col-form-label">Student Number:</label>
+                                <input type="text" th:value="${studentDto.studentNumber}" name="studentNumber" class="form-control" id="studentNumber">
+                                                                <p  th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"  class="text-danger"></p>
                             </div>
 
                             <div class="mb-3">
-                                <label for="dto-email-address" class="col-form-label">Email address:</label>
-                                <input type="email" class="form-control" id="dto-email-address">
-                                <!--                                <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  class="text-danger"></p>-->
+                                <label for="email" class="col-form-label">Email address:</label>
+                                <input th:value="${studentDto.email}" type="email" class="form-control" name="email" id="email">
+                                                                <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  class="text-danger"></p>
                             </div>
                             <div class="mb-3">
-                                <label for="dto-first-name" class="col-form-label">First Name:</label>
-                                <input type="text" class="form-control" id="dto-first-name">
-                                <!--                                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></p>-->
+                                <label for="firstName" class="col-form-label">First Name:</label>
+                                <input type="text" th:value="${studentDto.firstName}" class="form-control" id="firstName" name="firstName">
+                                                                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></p>
                             </div>
                             <div class="mb-3">
-                                <label for="dto-middle-name" class="col-form-label">Middle Name:</label>
-                                <input type="text" class="form-control" id="dto-middle-name">
-                                <!--                                <p th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" class="text-danger"></p>-->
+                                <label for="middleName" class="col-form-label">Middle Name:</label>
+                                <input type="text" th:value="${studentDto.middleName}" class="form-control" id="middleName" name="middleName">
+                                                                <p th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" class="text-danger"></p>
                             </div>
                             <div class="mb-3">
-                                <label for="dto-last-name" class="col-form-label">Last Name:</label>
-                                <input type="text" class="form-control" id="dto-last-name">
-                                <!--                                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>-->
+                                <label for="lastName" class="col-form-label">Last Name:</label>
+                                <input type="text" th:value="${studentDto.lastName}" class="form-control" id="lastName" name="lastName">
+                                                                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
                             </div>
                             <div class="mb-3">
-                                <label for="dto-contact-number" class="col-form-label">Contact Number:</label>
-                                <input type="text" class="form-control" id="dto-contact-number">
+                                <label for="contactNumber" class="col-form-label">Contact Number:</label>
+                                <input type="text" th:value="${studentDto.contactNumber}" class="form-control" id="contactNumber" name="contactNumber">
                                 <!--                                <p th:if="${#fields.hasErrors('contactNumber')}" th:errors="*{contactNumber}" class="text-danger"></p>-->
                             </div>
 
