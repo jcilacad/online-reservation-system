@@ -92,4 +92,15 @@ public class AdminController {
         return "admin/student-details";
     }
 
+    @PostMapping("/accounts/{studentId}")
+    public String updateStudentDetails(@PathVariable Long studentId,
+                                       @ModelAttribute("studentDto") UserDto userDto) {
+
+
+        // Update student details
+        userService.updateStudentDetailsById(studentId, userDto);
+
+        return "redirect:/admins/accounts/" + studentId + "?success";
+    }
+
 }

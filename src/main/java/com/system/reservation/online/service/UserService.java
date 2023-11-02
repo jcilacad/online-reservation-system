@@ -28,4 +28,6 @@ public interface UserService {
     UserDto mapUserToDto(User user);
 
     Page<User> findAllPaginated(Integer currentPage, Integer pageSize);
+
+    void updateStudentDetailsById(Long studentId, UserDto userDto);
 }

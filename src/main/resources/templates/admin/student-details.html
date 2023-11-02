@@ -74,7 +74,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form th:object="${studentDto}" method="POST">
+                        <form th:action="@{/admins/accounts/{studentId}(studentId=${student.id})}" th:object="${studentDto}" method="POST">
                             <div class="mb-3">
                                 <label for="studentNumber" class="col-form-label">Student Number:</label>
                                 <input type="text" th:value="${studentDto.studentNumber}" name="studentNumber" class="form-control" id="studentNumber">

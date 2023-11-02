@@ -142,4 +142,29 @@ public class UserServiceImpl implements UserService {
     public boolean isUserAuthenticated(Authentication authentication) {
         return authentication == null || authentication instanceof AnonymousAuthenticationToken;
     }
+
+    @Override
+    public void updateStudentDetailsById(Long studentId, UserDto userDto) {
+
+
+        // Find student by student id
+        User user = findByStudentId(studentId);
+
+        // Set new name
+        user.setName(userDto.getLastName().toUpperCase() + ", " +
+                     userDto.getFirstName().toUpperCase() + " " +
+                     userDto.getMiddleName().toUpperCase());
+
+        // Set email
+        user.setEmail(userDto.getEmail());
+
+        // Set student number
+        user.setStudentNumber(userDto.getStudentNumber());
+
+        // Set contact number
+        user.setContactNumber(userDto.getContactNumber());
+
+        // Update the new student details
+        userRepository.save(user);
+    }
 }
