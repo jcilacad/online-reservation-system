@@ -80,13 +80,12 @@ public class AdminController {
     public String viewStudentDetails(@PathVariable Long studentId,
                                      Model model) {
 
-
+        // Find student by id
         User student = userService.findByStudentId(studentId);
 
         model.addAttribute("student", student);
 
-
-        return "student/details";
+        return "admin/student-details";
     }
 
 }
