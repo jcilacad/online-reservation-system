@@ -77,12 +77,13 @@ public class AdminController {
 
 
     @GetMapping("/accounts/{userId}")
-    public String viewStudentDetails(@PathVariable Long userId,
+    public String viewStudentDetails(@PathVariable Long studentId,
                                      Model model) {
 
 
-        User user = userService.findByStudentId(userId);
+        User user = userService.findByStudentId(studentId);
 
+        
 
 
         return null;
