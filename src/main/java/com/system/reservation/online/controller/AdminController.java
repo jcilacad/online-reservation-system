@@ -76,7 +76,7 @@ public class AdminController {
     }
 
 
-    @GetMapping("/accounts/{userId}")
+    @GetMapping("/accounts/{studentId}")
     public String viewStudentDetails(@PathVariable Long studentId,
                                      Model model) {
 
