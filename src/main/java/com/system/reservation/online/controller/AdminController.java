@@ -81,7 +81,7 @@ public class AdminController {
                                      Model model) {
 
 
-        User user = userService.findById(userId);
+        User user = userService.findByStudentId(userId);
 
 
 
