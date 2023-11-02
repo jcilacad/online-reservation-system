@@ -23,5 +23,7 @@ public interface UserService {
 
     List<User> findAll();
 
+    User findByStudentId(Long studentId);
+
     Page<User> findAllPaginated(Integer currentPage, Integer pageSize);
 }

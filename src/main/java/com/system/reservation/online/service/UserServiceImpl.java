@@ -113,6 +113,14 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public User findByStudentId(Long studentId) {
+
+        return userRepository
+                .findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Did not found student id " + studentId));
+    }
+
     private Role checkRoleExist() {
 
         Role role = new Role();

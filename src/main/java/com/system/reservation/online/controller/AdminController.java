@@ -75,4 +75,17 @@ public class AdminController {
         return "redirect:/admins/accounts?success";
     }
 
+
+    @GetMapping("/accounts/{userId}")
+    public String viewStudentDetails(@PathVariable Long userId,
+                                     Model model) {
+
+
+        User user = userService.findById(userId);
+
+
+
+        return null;
+    }
+
 }
