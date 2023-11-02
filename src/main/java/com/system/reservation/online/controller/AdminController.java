@@ -81,12 +81,12 @@ public class AdminController {
                                      Model model) {
 
 
-        User user = userService.findByStudentId(studentId);
+        User student = userService.findByStudentId(studentId);
 
-        
+        model.addAttribute("student", student);
 
 
-        return null;
+        return "student/details";
     }
 
 }
