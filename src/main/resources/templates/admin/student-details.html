@@ -62,7 +62,32 @@
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-account"
                 data-bs-whatever="@getbootstrap">Update
         </button>
-        <button class="btn btn-danger" type="button">Delete</button>
+        <!--        <button class="btn btn-danger" type="button">Delete</button>-->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Delete
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this account ?
+                    </div>
+                    <form th:action="@{/admins/accounts/{studentId}(studentId=${student.id})}" th:method="DELETE">
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                    </form>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -74,40 +99,51 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Account</h1>
+                        <h1 class="modal-title fs-5">Add Account</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form th:action="@{/admins/accounts/{studentId}(studentId=${student.id})}" th:object="${studentDto}" method="POST">
+                        <form th:action="@{/admins/accounts/{studentId}(studentId=${student.id})}"
+                              th:object="${studentDto}" method="POST">
                             <div class="mb-3">
                                 <label for="studentNumber" class="col-form-label">Student Number:</label>
-                                <input type="text" th:value="${studentDto.studentNumber}" name="studentNumber" class="form-control" id="studentNumber">
-                                                                <p  th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"  class="text-danger"></p>
+                                <input type="text" th:value="${studentDto.studentNumber}" name="studentNumber"
+                                       class="form-control" id="studentNumber">
+                                <p th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"
+                                   class="text-danger"></p>
                             </div>
 
                             <div class="mb-3">
                                 <label for="email" class="col-form-label">Email address:</label>
-                                <input th:value="${studentDto.email}" type="email" class="form-control" name="email" id="email">
-                                                                <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  class="text-danger"></p>
+                                <input th:value="${studentDto.email}" type="email" class="form-control" name="email"
+                                       id="email">
+                                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
                             </div>
                             <div class="mb-3">
                                 <label for="firstName" class="col-form-label">First Name:</label>
-                                <input type="text" th:value="${studentDto.firstName}" class="form-control" id="firstName" name="firstName">
-                                                                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></p>
+                                <input type="text" th:value="${studentDto.firstName}" class="form-control"
+                                       id="firstName" name="firstName">
+                                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                                   class="text-danger"></p>
                             </div>
                             <div class="mb-3">
                                 <label for="middleName" class="col-form-label">Middle Name:</label>
-                                <input type="text" th:value="${studentDto.middleName}" class="form-control" id="middleName" name="middleName">
-                                                                <p th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" class="text-danger"></p>
+                                <input type="text" th:value="${studentDto.middleName}" class="form-control"
+                                       id="middleName" name="middleName">
+                                <p th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"
+                                   class="text-danger"></p>
                             </div>
                             <div class="mb-3">
                                 <label for="lastName" class="col-form-label">Last Name:</label>
-                                <input type="text" th:value="${studentDto.lastName}" class="form-control" id="lastName" name="lastName">
-                                                                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
+                                <input type="text" th:value="${studentDto.lastName}" class="form-control" id="lastName"
+                                       name="lastName">
+                                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                   class="text-danger"></p>
                             </div>
                             <div class="mb-3">
                                 <label for="contactNumber" class="col-form-label">Contact Number:</label>
-                                <input type="text" th:value="${studentDto.contactNumber}" class="form-control" id="contactNumber" name="contactNumber">
+                                <input type="text" th:value="${studentDto.contactNumber}" class="form-control"
+                                       id="contactNumber" name="contactNumber">
                                 <!--                                <p th:if="${#fields.hasErrors('contactNumber')}" th:errors="*{contactNumber}" class="text-danger"></p>-->
                             </div>
 
@@ -124,7 +160,6 @@
             </div>
         </div>
     </div>
-
 
 
     <div class="my-5">

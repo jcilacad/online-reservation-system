@@ -167,4 +167,18 @@ public class UserServiceImpl implements UserService {
         // Update the new student details
         userRepository.save(user);
     }
+
+
+    @Override
+    public void deleteStudentById(Long studentId) {
+
+        // Find student by id
+        User user = findByStudentId(studentId);
+
+        // Make the role as null
+        user.setRoles(null);
+
+        // Delete student
+        userRepository.deleteById(studentId);
+    }
 }

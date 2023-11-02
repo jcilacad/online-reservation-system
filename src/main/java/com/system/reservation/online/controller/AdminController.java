@@ -103,4 +103,13 @@ public class AdminController {
         return "redirect:/admins/accounts/" + studentId + "?success";
     }
 
+    @DeleteMapping("/accounts/{studentId}")
+    public String deleteStudent(@PathVariable Long studentId) {
+
+        // Delete student by id
+        userService.deleteStudentById(studentId);
+
+        return "redirect:/admins/accounts?deleted";
+    }
+
 }

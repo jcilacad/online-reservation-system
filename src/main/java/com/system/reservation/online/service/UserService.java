@@ -30,4 +30,6 @@ public interface UserService {
     Page<User> findAllPaginated(Integer currentPage, Integer pageSize);
 
     void updateStudentDetailsById(Long studentId, UserDto userDto);
+
+    void deleteStudentById(Long studentId);
 }
