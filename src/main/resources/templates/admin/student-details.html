@@ -53,6 +53,10 @@
 
     <a th:href="@{/admins/accounts}" type="button" class="btn btn-info mb-4">Back</a>
 
+    <div th:if="${param.success}" class="alert alert-success" role="alert">
+        Successfully updated student details
+    </div>
+
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-account"
