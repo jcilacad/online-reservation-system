@@ -99,7 +99,7 @@ public class UserServiceImpl implements UserService {
         // Setting up a name
         userDto.setFirstName(name[1]);
         userDto.setMiddleName(name[2]);
-        userDto.setLastName(name[0]);
+        userDto.setLastName(name[0].substring(0, name[0].length() - 1));
 
         // Setting up a student number
         userDto.setStudentNumber(user.getStudentNumber());
