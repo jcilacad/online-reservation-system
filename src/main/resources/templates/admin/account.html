@@ -127,11 +127,14 @@
 
     </div>
 
-    <div class="input-group mb-3 mt-3">
-            <input type="text" class="form-control" placeholder="Student's name" aria-label="Recipient's username"
+
+    <form th:action="@{/admins/accounts}" method="GET">
+        <div class="input-group mb-3 mt-3">
+            <input name="name" type="text" class="form-control" placeholder="Student's name" aria-label="Recipient's username"
                    aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-    </div>
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+        </div>
+    </form>
 
 
     <div th:if="${param.success}" class="alert alert-success my-3" role="alert">
