@@ -90,35 +90,6 @@
             </div>
         </div>
 
-
-<!--        &lt;!&ndash;        <button class="btn btn-danger" type="button">Delete</button>&ndash;&gt;-->
-<!--        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
-<!--            Delete-->
-<!--        </button>-->
-
-<!--        &lt;!&ndash; Modal &ndash;&gt;-->
-<!--        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--            <div class="modal-dialog">-->
-<!--                <div class="modal-content">-->
-<!--                    <div class="modal-header">-->
-<!--                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>-->
-<!--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                    </div>-->
-<!--                    <div class="modal-body">-->
-<!--                        Are you sure you want to delete this account ?-->
-<!--                    </div>-->
-<!--                    <form th:action="@{/admins/accounts/{studentId}(studentId=${student.id})}" th:method="DELETE">-->
-<!--                        <input type="hidden" name="_method" value="delete">-->
-<!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>-->
-<!--                        <button type="submit" class="btn btn-primary">Yes</button>-->
-<!--                    </form>-->
-<!--                    <div class="modal-footer">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
     </div>
 
 
@@ -130,12 +101,14 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5">Add Account</h1>
+                        <h1 class="modal-title fs-5">Update Account</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form th:action="@{/admins/accounts/{studentId}(studentId=${student.id})}"
-                              th:object="${studentDto}" method="POST">
+                              th:object="${studentDto}" th:method="PUT">
+
+                            <input type="hidden" name="_method" value="update">
                             <div class="mb-3">
                                 <label for="studentNumber" class="col-form-label">Student Number:</label>
                                 <input type="text" th:value="${studentDto.studentNumber}" name="studentNumber"
