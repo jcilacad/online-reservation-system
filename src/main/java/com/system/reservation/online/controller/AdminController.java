@@ -43,11 +43,12 @@ public class AdminController {
         UserDto user = new UserDto();
 
         // Get the list of users
-//        List<User> users = userService.findAll();
 
         if (name != null) {
+            // If the name is present in the @RequestParam, display students that contains the name
             users = userService.findStudentByNameContaining(name, page, 10);
         } else {
+            // Otherwise, display all the list of students
             users = userService.findAllPaginated(page, 10);
         }
 
