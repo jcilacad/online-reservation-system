@@ -7,6 +7,7 @@ import com.system.reservation.online.repository.RoleRepository;
 import com.system.reservation.online.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -88,6 +89,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<User> findAllPaginated(Integer currentPage, Integer pageSize) {
         return userRepository.findAll(PageRequest.of(currentPage, pageSize));
+
+    }
+
+    @Override
+    public Page<User> findStudentByNameContaining(String name, Integer currentPage, Integer pageSize) {
+
+        List<User> userList = userRepository.findByNameContainingIgnoreCase(name);
+
+        Page<User> page = new PageImpl<>(userList, PageRequest.of(currentPage, pageSize), userList.size());
+
+        return page;
     }
 
     @Override

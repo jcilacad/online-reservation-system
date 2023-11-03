@@ -3,7 +3,6 @@ package com.system.reservation.online.service;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.User;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 
 import java.awt.print.Pageable;
@@ -32,4 +31,6 @@ public interface UserService {
     void updateStudentDetailsById(Long studentId, UserDto userDto);
 
     void deleteStudentById(Long studentId);
+
+    Page<User> findStudentByNameContaining(String name, Integer currentPage, Integer pageSize);
 }

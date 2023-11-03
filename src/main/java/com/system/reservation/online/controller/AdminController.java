@@ -33,15 +33,23 @@ public class AdminController {
 
     @GetMapping("/accounts")
     public String accounts(Model model,
-                           @RequestParam(defaultValue = "0") Integer page) {
+                           @RequestParam(defaultValue = "0") Integer page,
+                           @RequestParam(required = false) String name) {
 
+        // Instantiate page
+        Page<User> users;
 
         // Instantiate userDto for form
         UserDto user = new UserDto();
 
         // Get the list of users
 //        List<User> users = userService.findAll();
-        Page<User> users = userService.findAllPaginated(page, 10);
+
+        if (name != null) {
+            users = userService.findStudentByNameContaining(name, page, 10);
+        } else {
+            users = userService.findAllPaginated(page, 10);
+        }
 
         model.addAttribute("users", users);
         model.addAttribute("userDto", user);
