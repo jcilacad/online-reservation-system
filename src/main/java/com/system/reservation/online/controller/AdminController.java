@@ -131,7 +131,7 @@ public class AdminController {
     @GetMapping("/items/item")
     public String addItem() {
 
-        return "";
+        return "admin/item";
     }
 
 
