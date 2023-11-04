@@ -35,7 +35,6 @@ public class AuthControllerSecurityConfig {
         http.csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/index/**").permitAll()
-                        .requestMatchers("/register").permitAll()
                         .requestMatchers("/default").hasAnyRole("ADMIN", "STUDENT")
                         .requestMatchers("/users/**").hasRole("ADMIN")
                         .requestMatchers("/students/**").hasRole("STUDENT")
