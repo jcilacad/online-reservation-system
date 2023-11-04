@@ -121,4 +121,12 @@ public class AdminController {
         return "redirect:/admins/accounts?deleted";
     }
 
+
+    @GetMapping("/items")
+    public String viewItems() {
+
+        return "admin/items";
+    }
+
+
 }
