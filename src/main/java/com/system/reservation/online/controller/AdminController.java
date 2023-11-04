@@ -156,6 +156,11 @@ public class AdminController {
                           BindingResult result,
                           Model model) throws IOException {
 
+        if (result.hasErrors()) {
+            model.addAttribute("itemDto", itemDto);
+            return "admin/item";
+        }
+
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         Long id = itemService.saveItem(itemDto, fileName);

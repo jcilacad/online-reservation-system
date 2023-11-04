@@ -73,24 +73,34 @@
             <span class="input-group-text" id="inputGroup-sizing-name">Name</span>
             <input th:field="*{name}" type="text" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-name">
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger" role="alert">
+            </div>
         </div>
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-size">Size</span>
             <input th:field="*{size}" type="text" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-size">
+            <div th:if="${#fields.hasErrors('size')}" th:errors="*{size}" class="alert alert-danger" role="alert">
+            </div>
         </div>
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-price">Price</span>
             <input th:field="*{price}" type="text" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-price">
+            <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="alert alert-danger" role="alert">
+                A simple danger alert—check it out!
+            </div>
         </div>
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-quantity">Quantity</span>
             <input th:field="*{quantity}" type="text" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-quantity">
+            <div th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="alert alert-danger" role="alert">
+                A simple danger alert—check it out!
+            </div>
         </div>
 
         <div class="input-group">
