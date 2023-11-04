@@ -1,17 +1,22 @@
 package com.system.reservation.online.controller;
 
+import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.service.UserService;
+import jakarta.persistence.Id;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -131,12 +136,24 @@ public class AdminController {
     @GetMapping("/items/item")
     public String addItem(Model model) {
 
+        ItemDto itemDto = new ItemDto();
+
+        model.addAttribute("itemDto", itemDto);
+
         return "admin/item";
     }
 
 
     @PostMapping("/items/item")
-    public String addItem() {
+    public String addItem(@RequestParam("image")MultipartFile multipartFile,
+                          @Valid @ModelAttribute("itemDto") ItemDto itemDto,
+                          BindingResult result,
+                          Model model) throws IOException {
+
+
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+
+
 
         return null;
 
