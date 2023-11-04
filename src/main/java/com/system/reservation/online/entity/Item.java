@@ -45,7 +45,7 @@ public class Item {
         this.quantity = quantity;
         this.description = description;
     }
-    
+
     @Transient
     public String getPhotosImagePath() {
         if (photos == null || id == null) return null;

@@ -1,8 +1,6 @@
 package com.system.reservation.online.dto;
 
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,10 +19,10 @@ public class ItemDto {
     private String size;
 
     @DecimalMin("0.0")
-    @NotEmpty
+    @NotNull
     private Double price;
 
-    @NotEmpty
+    @NotNull
     private Integer quantity;
 
     private String description;
