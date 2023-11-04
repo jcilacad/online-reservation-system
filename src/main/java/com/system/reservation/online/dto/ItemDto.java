@@ -14,10 +14,6 @@ import lombok.Setter;
 @Setter
 public class ItemDto {
 
-
-    @NotEmpty
-    private String photos;
-
     @NotEmpty
     private String name;
 

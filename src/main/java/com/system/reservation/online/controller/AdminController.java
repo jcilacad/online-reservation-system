@@ -6,6 +6,7 @@ import com.system.reservation.online.entity.User;
 import com.system.reservation.online.service.UserService;
 import jakarta.persistence.Id;
 import jakarta.validation.Valid;
+import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -152,6 +153,12 @@ public class AdminController {
 
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        Long id = userService.saveItem(itemDto, fileName);
+
+        String uploadDir = "item-photos/" + id;
+
+
+
 
 
 
