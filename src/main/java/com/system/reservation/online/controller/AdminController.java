@@ -129,9 +129,17 @@ public class AdminController {
     }
 
     @GetMapping("/items/item")
-    public String addItem() {
+    public String addItem(Model model) {
 
         return "admin/item";
+    }
+
+
+    @PostMapping("/items/item")
+    public String addItem() {
+
+        return null;
+
     }
 
 
