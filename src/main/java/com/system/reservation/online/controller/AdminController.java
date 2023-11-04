@@ -128,5 +128,11 @@ public class AdminController {
         return "admin/items";
     }
 
+    @GetMapping("/items/item")
+    public String addItem() {
+
+        return "";
+    }
+
 
 }
