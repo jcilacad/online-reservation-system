@@ -164,7 +164,7 @@ public class AdminController {
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-        return "redirect:/admins/items/item";
+        return "redirect:/admins/items/item?success";
 
     }
 
