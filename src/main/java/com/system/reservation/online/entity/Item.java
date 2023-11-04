@@ -36,4 +36,13 @@ public class Item {
 
     @Column(name = "description")
     private String description;
+
+    public Item(String photos, String name, String size, Double price, Integer quantity, String description) {
+        this.photos = photos;
+        this.name = name;
+        this.size = size;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+    }
 }

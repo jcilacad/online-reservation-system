@@ -4,6 +4,7 @@ import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.service.UserService;
+import com.system.reservation.online.util.FileUploadUtil;
 import jakarta.persistence.Id;
 import jakarta.validation.Valid;
 import org.apache.tomcat.util.http.fileupload.FileUpload;
@@ -153,16 +154,13 @@ public class AdminController {
 
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        Long id = userService.saveItem(itemDto, fileName);
+        Long id = itemService.saveItem(itemDto, fileName);
 
         String uploadDir = "item-photos/" + id;
 
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-
-
-
-
-        return null;
+        return "redirect:/admins/items/item";
 
     }
 
