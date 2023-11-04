@@ -36,7 +36,7 @@
                     </li>
 
                     <li sec:authorize="isAuthenticated()" class="nav-item">
-                        <a class="nav-link" th:href="@{/users}">Registered Users</a>
+                        <a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="nav-link" th:href="@{/admins/dashboard}">Dashboard</a>
                     </li>
 
                     <li sec:authorize="isAuthenticated()" class="nav-item">
