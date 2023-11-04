@@ -3,6 +3,7 @@ package com.system.reservation.online.controller;
 import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.User;
+import com.system.reservation.online.service.ItemService;
 import com.system.reservation.online.service.UserService;
 import com.system.reservation.online.util.FileUploadUtil;
 import jakarta.persistence.Id;
@@ -26,10 +27,13 @@ import java.util.List;
 public class AdminController {
 
     UserService userService;
+    ItemService itemService;
 
     @Autowired
-    public AdminController(UserService userService) {
+    public AdminController(UserService userService,
+                           ItemService itemService) {
         this.userService = userService;
+        this.itemService = itemService;
     }
 
     @GetMapping({"/dashboard", "/", ""})
