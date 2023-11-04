@@ -40,7 +40,7 @@ public class AuthController {
             return "login";
         }
 
-        return "redirect:/users";
+        return "redirect:/default";
 
     }
 
