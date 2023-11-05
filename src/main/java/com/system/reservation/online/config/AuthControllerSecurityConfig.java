@@ -39,6 +39,7 @@ public class AuthControllerSecurityConfig {
                         .requestMatchers("/users/**").hasRole("ADMIN")
                         .requestMatchers("/students/**").hasRole("STUDENT")
                         .requestMatchers("/admins/**").hasRole("ADMIN")
+                        .requestMatchers("/item-photos/**").hasRole("ADMIN")
 
                 )
                 .formLogin(form -> form
