@@ -150,7 +150,8 @@ public class AdminController {
             items = itemService.findAllPaginated(page, 10);
         }
 
-        model.addAttribute("items", items.getContent());
+        model.addAttribute("items", items);
+        model.addAttribute("page", page);
 
         return "admin/items";
     }

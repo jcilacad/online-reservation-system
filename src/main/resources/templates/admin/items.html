@@ -77,7 +77,7 @@
 
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
 
-        <div th:each="item : ${items}" class="col">
+        <div th:each="item : ${items.content}" class="col">
             <div class="card h-100">
                 <img th:src="${item.photosImagePath}" class="card-img-top" height="50%">
                 <div class="card-body">
@@ -101,6 +101,27 @@
 
 
     </div>
+
+    <nav aria-label="Page navigation" class="my-4">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/admins/items(page=0)}">First</a>
+            </li>
+            <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/admins/items(page=${page - 1})}">Previous</a>
+            </li>
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, items.totalPages - 1)}"
+                th:classappend="${page == i ? 'active' : ''}">
+                <a class="page-link" th:href="@{/admins/items(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+            <li class="page-item" th:classappend="${page == items.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/admins/items(page=${page + 1})}">Next</a>
+            </li>
+            <li class="page-item" th:classappend="${page == items.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/admins/items(page=${items.totalPages - 1})}">Last</a>
+            </li>
+        </ul>
+    </nav>
 
 
 </div>
