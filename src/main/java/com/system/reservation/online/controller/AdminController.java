@@ -135,12 +135,22 @@ public class AdminController {
 
 
     @GetMapping("/items")
-    public String viewItems(Model model) {
+    public String viewItems( @RequestParam(defaultValue = "0") Integer page,
+                             @RequestParam(name = "name", required = false) String name,
+                            Model model) {
 
         // Get all items
-        List<Item> items = itemService.findAll();
+        Page<Item> items;
 
-        model.addAttribute("items", items);
+        if (name != null) {
+            // If the name is present in the @RequestParam, display students that contains the name
+            items = itemService.findItemByNameContaining(name, page, 10);
+        } else {
+            // Otherwise, display the list of students
+            items = itemService.findAllPaginated(page, 10);
+        }
+
+        model.addAttribute("items", items.getContent());
 
         return "admin/items";
     }
