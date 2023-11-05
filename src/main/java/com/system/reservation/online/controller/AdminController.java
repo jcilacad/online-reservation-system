@@ -2,6 +2,7 @@ package com.system.reservation.online.controller;
 
 import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.dto.UserDto;
+import com.system.reservation.online.entity.Item;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.service.ItemService;
 import com.system.reservation.online.service.UserService;
@@ -142,8 +143,13 @@ public class AdminController {
     @GetMapping("/items/item")
     public String addItem(Model model) {
 
+        // Initialize itemDto
         ItemDto itemDto = new ItemDto();
 
+        // Get all items
+        List<Item> items = itemService.findAll();
+
+        model.addAttribute("items", items);
         model.addAttribute("itemDto", itemDto);
 
         return "admin/item";
