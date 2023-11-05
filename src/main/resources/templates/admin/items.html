@@ -63,6 +63,12 @@
         </div>
 
 
+        <div th:each="item : $items">
+
+            <img th:src="/@{${item.photosImagePath}}" />
+        </div>
+
+
     </div>
 
 

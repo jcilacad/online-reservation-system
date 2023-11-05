@@ -135,7 +135,12 @@ public class AdminController {
 
 
     @GetMapping("/items")
-    public String viewItems() {
+    public String viewItems(Model model) {
+
+        // Get all items
+        List<Item> items = itemService.findAll();
+
+        model.addAttribute("items", items);
 
         return "admin/items";
     }
@@ -146,10 +151,7 @@ public class AdminController {
         // Initialize itemDto
         ItemDto itemDto = new ItemDto();
 
-        // Get all items
-        List<Item> items = itemService.findAll();
 
-        model.addAttribute("items", items);
         model.addAttribute("itemDto", itemDto);
 
         return "admin/item";
