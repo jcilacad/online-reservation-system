@@ -68,46 +68,49 @@
 
     <form th:action="@{/admins/accounts}" method="GET">
         <div class="input-group mb-3 mt-3">
-            <input name="name" type="text" class="form-control" placeholder="Student's name" aria-label="Recipient's username"
+            <input name="name" type="text" class="form-control" placeholder="Student's name"
+                   aria-label="Recipient's username"
                    aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
         </div>
     </form>
 
-<!--    <div th:each="item : ${items}">-->
+    <!--    <div th:each="item : ${items}">-->
 
-<!--&lt;!&ndash;        <img th:src="/@{${item.photosImagePath}}" />&ndash;&gt;-->
+    <!--&lt;!&ndash;        <img th:src="/@{${item.photosImagePath}}" />&ndash;&gt;-->
 
-<!--        <img th:src="${item.photosImagePath}" />-->
-<!--    </div>-->
+    <!--        <img th:src="${item.photosImagePath}" />-->
+    <!--    </div>-->
 
 
-<!--    Reference -->
+    <!--    Reference -->
 
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
 
-        <div th:each="item : ${items}"  class="col">
-            <div class="card h-75">
-                <img th:src="${item.photosImagePath}" class="card-img-top" height="40%">
+        <div th:each="item : ${items}" class="col">
+            <div class="card h-100">
+                <img th:src="${item.photosImagePath}" class="card-img-top" height="50%">
                 <div class="card-body">
-                    <h5 class="card-title mb-2" th:text="${item.name}"></h5>
+                    <h5 class="card-title" th:text="${item.name}"></h5>
                     <small class="card-text"><b>Price:</b> ₱[[${item.price}]]</small><br>
 
                     <small class="card-text"><b>Stock:</b> [[${item.quantity}]]</small><br>
 
                     <small class="card-text"><b>Size:</b> [[${item.size}]]</small><br>
-                    <small class="card-text"><b>Description:</b> [[${item.description}]]</small><br>
+                    <small class="card-text"><b>Description:</b> [[${item.description}]]</small>
+
+                    <div class="d-grid gap-2 my-2">
+                        <button class="btn btn-info btn-sm" type="button">Update</button>
+                        <button class="btn btn-danger btn-sm" type="button">Delete</button>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <small class="text-body-secondary">Last updated 3 mins ago</small>
-                </div>
+
+
             </div>
         </div>
 
 
     </div>
-
-
 
 
 </div>
