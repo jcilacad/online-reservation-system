@@ -68,22 +68,12 @@
 
     <form th:action="@{/admins/accounts}" method="GET">
         <div class="input-group mb-3 mt-3">
-            <input name="name" type="text" class="form-control" placeholder="Student's name"
+            <input name="name" type="text" class="form-control" placeholder="Item name"
                    aria-label="Recipient's username"
                    aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
         </div>
     </form>
-
-    <!--    <div th:each="item : ${items}">-->
-
-    <!--&lt;!&ndash;        <img th:src="/@{${item.photosImagePath}}" />&ndash;&gt;-->
-
-    <!--        <img th:src="${item.photosImagePath}" />-->
-    <!--    </div>-->
-
-
-    <!--    Reference -->
 
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
 
