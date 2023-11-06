@@ -65,6 +65,11 @@
 
     </div>
 
+    <div th:if="${param.deleted}" class="alert alert-success" role="alert">
+        Successfully deleted an item!
+    </div>
+
+
 
     <form th:action="@{/admins/items}" method="GET">
         <div class="input-group mb-3 mt-3">
