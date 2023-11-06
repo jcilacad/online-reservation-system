@@ -193,9 +193,15 @@ public class AdminController {
     }
 
     @GetMapping("/items/item/{itemId}")
-    public String updateItem (@PathVariable Long itemId) {
+    public String updateItem (@PathVariable Long itemId,
+                              Model model) {
 
-        return null;
+        // Find item by id
+        Item item = itemService.findById(itemId);
+
+        model.addAttribute("item", item);
+
+        return "admin/update-item";
     }
 
 
