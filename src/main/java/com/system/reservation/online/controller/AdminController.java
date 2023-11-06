@@ -199,6 +199,10 @@ public class AdminController {
         // Find item by id
         Item item = itemService.findById(itemId);
 
+        // Initialize item dto
+        ItemDto itemDto = new ItemDto();
+
+        model.addAttribute("itemDto", itemDto);
         model.addAttribute("item", item);
 
         return "admin/update-item";
