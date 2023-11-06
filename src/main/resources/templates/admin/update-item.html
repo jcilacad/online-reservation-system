@@ -59,7 +59,7 @@
     </div>
 
     <div th:if="${param.success}" class="alert alert-success" role="alert">
-        Successfully added an item!
+        Successfully updated an item!
     </div>
 
     <form class="my-5" th:object="${itemDto}" th:action="@{/admins/items/item/{itemId}(itemId=${item.id})}" th:method="PUT" enctype="multipart/form-data">
@@ -73,7 +73,7 @@
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-name">Name</span>
-            <input th:value="${item.name}" name="name" id="name" text" class="form-control" aria-label="Sizing example input"
+            <input th:value="${item.name}" name="name" id="name" type="text" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-name">
             <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger" role="alert">
             </div>
