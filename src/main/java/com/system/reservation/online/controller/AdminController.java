@@ -73,8 +73,8 @@ public class AdminController {
 
     @PostMapping("/accounts")
     public String addAccount(@Valid @ModelAttribute("userDto") UserDto userDto,
-                                                               BindingResult result,
-                                                               Model model) {
+                             BindingResult result,
+                             Model model) {
 
         // Check if user exists
         boolean isUserExists = userService.isUserExists(userDto);
@@ -135,8 +135,8 @@ public class AdminController {
 
 
     @GetMapping("/items")
-    public String viewItems( @RequestParam(defaultValue = "0") Integer page,
-                             @RequestParam(name = "name", required = false) String name,
+    public String viewItems(@RequestParam(defaultValue = "0") Integer page,
+                            @RequestParam(name = "name", required = false) String name,
                             Model model) {
 
         // Get all items
@@ -170,7 +170,7 @@ public class AdminController {
 
 
     @PostMapping("/items/item")
-    public String addItem(@RequestParam("image")MultipartFile multipartFile,
+    public String addItem(@RequestParam("image") MultipartFile multipartFile,
                           @Valid @ModelAttribute("itemDto") ItemDto itemDto,
                           BindingResult result,
                           Model model) throws IOException {
@@ -193,8 +193,8 @@ public class AdminController {
     }
 
     @GetMapping("/items/item/{itemId}")
-    public String updateItem (@PathVariable Long itemId,
-                              Model model) {
+    public String viewItem(@PathVariable Long itemId,
+                           Model model) {
 
         // Find item by id
         Item item = itemService.findById(itemId);
@@ -206,6 +206,33 @@ public class AdminController {
         model.addAttribute("item", item);
 
         return "admin/update-item";
+    }
+
+    @PutMapping("/items/item/{itemId}")
+    public String updateItem(@RequestParam("image") MultipartFile multipartFile,
+                             @PathVariable Long itemId,
+                             @Valid @ModelAttribute("itemDto") ItemDto itemDto,
+                             BindingResult result,
+                             Model model) throws IOException {
+
+
+        // Form validations
+        if (result.hasErrors()) {
+            model.addAttribute("itemDto", itemDto);
+            return "admin/update-item";
+        }
+
+
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        itemService.updateItem(itemId, itemDto, fileName);
+
+        String uploadDir = "item-photos/" + itemId;
+
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+        return "redirect:/admins/items/item/" + itemId + "?success";
+
+
     }
 
 

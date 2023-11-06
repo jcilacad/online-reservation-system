@@ -11,6 +11,8 @@ public interface ItemService {
 
     Long saveItem(ItemDto itemDto, String fileName);
 
+    void updateItem(Long itemId, ItemDto itemDto, String fileName);
+
     List<Item> findAll();
 
     Page<Item> findAllPaginated(Integer currentPage, Integer pageSize);
@@ -18,4 +20,6 @@ public interface ItemService {
     Page<Item> findItemByNameContaining(String name, Integer currentPage, Integer pageSize);
 
     Item findById(Long id);
+
+
 }

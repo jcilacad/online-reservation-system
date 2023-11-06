@@ -41,6 +41,27 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
+    public void updateItem(Long itemId, ItemDto itemDto, String fileName) {
+
+        // Find item by id, if not exists throw an exception
+        Item item = itemRepository
+                .findById(itemId)
+                .orElseThrow(()-> new RuntimeException("Did not found id " + itemId));
+
+
+        // Set the new value/s of item from itemDto
+        item.setPhotosImagePath(fileName);
+        item.setName(itemDto.getName());
+        item.setSize(itemDto.getSize());
+        item.setPrice(itemDto.getPrice());
+        item.setQuantity(itemDto.getQuantity());
+        item.setDescription(itemDto.getDescription());
+
+        // update it in DB
+        itemRepository.save(item);
+    }
+
+    @Override
     public List<Item> findAll() {
         return itemRepository.findAll();
     }
