@@ -16,4 +16,6 @@ public interface ItemService {
     Page<Item> findAllPaginated(Integer currentPage, Integer pageSize);
 
     Page<Item> findItemByNameContaining(String name, Integer currentPage, Integer pageSize);
+
+    Item findById(Long id);
 }

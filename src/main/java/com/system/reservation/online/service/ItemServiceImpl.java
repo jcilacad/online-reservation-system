@@ -58,4 +58,13 @@ public class ItemServiceImpl implements ItemService{
 
         return page;
     }
+
+    @Override
+    public Item findById(Long id) {
+
+        return itemRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException(
+                        "Id - " + id + " does not exists"
+                ));
+    }
 }
