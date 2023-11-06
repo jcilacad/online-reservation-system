@@ -88,4 +88,11 @@ public class ItemServiceImpl implements ItemService{
                         "Id - " + id + " does not exists"
                 ));
     }
+
+
+    @Override
+    public void deleteById(Long id) {
+
+        itemRepository.deleteById(id);
+    }
 }
