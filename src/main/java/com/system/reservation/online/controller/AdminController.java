@@ -216,6 +216,8 @@ public class AdminController {
                              Model model) throws IOException {
 
 
+        System.out.println("item id - " + itemId);
+
         // Form validations
         if (result.hasErrors()) {
             model.addAttribute("itemDto", itemDto);
@@ -236,8 +238,10 @@ public class AdminController {
     }
 
 
-    @DeleteMapping("/items/{itemId}")
+    @DeleteMapping("/items/item/{itemId}")
     public String deleteItem(@PathVariable Long itemId) {
+
+        System.out.println("Deleted item with id " + itemId);
 
         // Delete item by id
         itemService.deleteById(itemId);
