@@ -90,7 +90,7 @@
                     <small class="card-text"><b>Description:</b> [[${item.description}]]</small>
 
                     <div class="d-grid gap-2 my-2">
-                        <a th:href="@{/admins/items/item/update}" class="btn btn-info btn-sm" type="button">Update</a>
+                        <a th:href="@{/admins/items/item/update/{itemId}(itemId=${item.id})}" class="btn btn-info btn-sm" type="button">Update</a>
                         <button class="btn btn-danger btn-sm" type="button">Delete</button>
                     </div>
                 </div>

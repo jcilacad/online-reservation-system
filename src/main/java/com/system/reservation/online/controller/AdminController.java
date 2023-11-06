@@ -192,7 +192,7 @@ public class AdminController {
 
     }
 
-    @GetMapping("/items/item/update")
+    @GetMapping("/items/item/")
     public String updateItem () {
 
         return null;
