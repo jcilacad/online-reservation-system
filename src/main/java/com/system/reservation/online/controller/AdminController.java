@@ -237,10 +237,10 @@ public class AdminController {
 
 
     @DeleteMapping("/items/{itemId}")
-    public String deleteItem(@PathVariable Long id) {
+    public String deleteItem(@PathVariable Long itemId) {
 
         // Delete item by id
-        itemService.deleteById(id);
+        itemService.deleteById(itemId);
 
         return "redirect:/admins/items?deleted";
     }
