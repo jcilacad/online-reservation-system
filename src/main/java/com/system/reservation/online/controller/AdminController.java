@@ -192,8 +192,8 @@ public class AdminController {
 
     }
 
-    @GetMapping("/items/item/")
-    public String updateItem () {
+    @GetMapping("/items/item/{itemId}")
+    public String updateItem (@PathVariable Long itemId) {
 
         return null;
     }

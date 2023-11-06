@@ -50,78 +50,70 @@
 <div class="container" style="margin-top: 80px">
 
 
-    <a th:href="@{/admins/dashboard}" type="button" class="btn btn-info mb-4">Back</a>
+    <a th:href="@{/admins/items}" type="button" class="btn btn-info mb-4">Back</a>
 
     <div class="d-flex">
 
-
-        <div class="flex-grow-1"><h3>Items</h3></div>
-
-        <div>
-            <a th:href="@{/admins/items/item}" class="btn btn-success">Add Item
-            </a>
-        </div>
-
+        <div class="flex-grow-1"><h3>Add Item</h3></div>
 
     </div>
 
+    <div th:if="${param.success}" class="alert alert-success" role="alert">
+        Successfully added an item!
+    </div>
 
-    <form th:action="@{/admins/items}" method="GET">
-        <div class="input-group mb-3 mt-3">
-            <input name="name" type="text" class="form-control" placeholder="Item name"
-                   aria-label="Recipient's username"
-                   aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+    <form class="my-5" th:object="${itemDto}" th:action="@{/admins/items/item}" method="POST" enctype="multipart/form-data">
+
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" name="image" accept="image/png, image/jpeg" id="inputGroupFile02">
+            <label class="input-group-text" for="inputGroupFile02">Upload Image</label>
         </div>
-    </form>
 
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-
-        <div th:each="item : ${items.content}" class="col">
-            <div class="card h-100">
-                <img th:src="${item.photosImagePath}" class="card-img-top" height="50%">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${item.name}"></h5>
-                    <small class="card-text"><b>Price:</b> ₱[[${item.price}]]</small><br>
-
-                    <small class="card-text"><b>Stock:</b> [[${item.quantity}]]</small><br>
-
-                    <small class="card-text"><b>Size:</b> [[${item.size}]]</small><br>
-                    <small class="card-text"><b>Description:</b> [[${item.description}]]</small>
-
-                    <div class="d-grid gap-2 my-2">
-                        <a th:href="@{/admins/items/item/{itemId}(itemId=${item.id})}" class="btn btn-info btn-sm" type="button">Update</a>
-                        <button class="btn btn-danger btn-sm" type="button">Delete</button>
-                    </div>
-                </div>
-
-
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-name">Name</span>
+            <input th:field="*{name}" type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-name">
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger" role="alert">
             </div>
         </div>
 
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-size">Size</span>
+            <input th:field="*{size}" type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-size">
+            <div th:if="${#fields.hasErrors('size')}" th:errors="*{size}" class="alert alert-danger" role="alert">
+            </div>
+        </div>
 
-    </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-price">Price</span>
+            <input th:field="*{price}" type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-price">
+            <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="alert alert-danger" role="alert">
+                A simple danger alert—check it out!
+            </div>
+        </div>
 
-    <nav aria-label="Page navigation" class="my-4">
-        <ul class="pagination">
-            <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/admins/items(page=0)}">First</a>
-            </li>
-            <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/admins/items(page=${page - 1})}">Previous</a>
-            </li>
-            <li class="page-item" th:each="i : ${#numbers.sequence(0, items.totalPages - 1)}"
-                th:classappend="${page == i ? 'active' : ''}">
-                <a class="page-link" th:href="@{/admins/items(page=${i})}" th:text="${i + 1}"></a>
-            </li>
-            <li class="page-item" th:classappend="${page == items.totalPages - 1 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/admins/items(page=${page + 1})}">Next</a>
-            </li>
-            <li class="page-item" th:classappend="${page == items.totalPages - 1 ? 'disabled' : ''}">
-                <a class="page-link" th:href="@{/admins/items(page=${items.totalPages - 1})}">Last</a>
-            </li>
-        </ul>
-    </nav>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-quantity">Quantity</span>
+            <input th:field="*{quantity}" type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-quantity">
+            <div th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="alert alert-danger" role="alert">
+                A simple danger alert—check it out!
+            </div>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text">Description (Optional)</span>
+            <textarea th:field="*{description}" class="form-control" aria-label="With textarea"></textarea>
+        </div>
+
+        <div class="mt-4 d-grid gap-2" style="height: 50px">
+            <button type="submit" class="btn btn-success">Add</button>
+        </div>
+
+
+    </form>
 
 
 </div>
