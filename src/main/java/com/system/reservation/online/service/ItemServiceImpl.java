@@ -50,7 +50,7 @@ public class ItemServiceImpl implements ItemService{
 
 
         // Set the new value/s of item from itemDto
-        item.setPhotosImagePath(fileName);
+        item.setPhotos(fileName);
         item.setName(itemDto.getName());
         item.setSize(itemDto.getSize());
         item.setPrice(itemDto.getPrice());
