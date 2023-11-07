@@ -277,7 +277,12 @@ public class AdminController {
         }
 
         // Change password
-        userService.changePassword(principal, changePasswordDto);
+        boolean isMatch = userService.changePassword(principal, changePasswordDto);
+
+        // If there's an error, display error response
+        if (!isMatch) {
+            return "redirect:/admins/password?error";
+        }
 
         return "redirect:/admins/password?success";
     }
