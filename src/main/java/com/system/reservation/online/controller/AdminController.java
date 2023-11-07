@@ -254,7 +254,7 @@ public class AdminController {
 
 
     @GetMapping("/password")
-    public String changePassword (Model model) {
+    public String getChangePassword (Model model) {
 
         // Initialize change password dto
         ChangePasswordDto changePasswordDto = new ChangePasswordDto();
@@ -262,6 +262,23 @@ public class AdminController {
         model.addAttribute("changePasswordDto", changePasswordDto);
 
         return "admin/change-password";
+    }
+
+    @PostMapping("/password")
+    public String changePassword (@ModelAttribute(name = "changePasswordDto") ChangePasswordDto changePasswordDto,
+                                  BindingResult result,
+                                  Model model) {
+
+        // field validation
+        if (result.hasErrors()) {
+            model.addAttribute("changePasswordDto", changePasswordDto);
+            return "admin/change-password";
+        }
+
+        // Change password
+        userService.changePassword(changePasswordDto);
+
+        return "redirect:/admins/password?success";
     }
 
 
