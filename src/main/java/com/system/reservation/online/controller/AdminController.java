@@ -265,7 +265,8 @@ public class AdminController {
     }
 
     @PostMapping("/password")
-    public String changePassword (@ModelAttribute(name = "changePasswordDto") ChangePasswordDto changePasswordDto,
+    public String changePassword (Principal principal,
+                                  @ModelAttribute(name = "changePasswordDto") ChangePasswordDto changePasswordDto,
                                   BindingResult result,
                                   Model model) {
 
@@ -276,7 +277,7 @@ public class AdminController {
         }
 
         // Change password
-        userService.changePassword(changePasswordDto);
+        userService.changePassword(principal, changePasswordDto);
 
         return "redirect:/admins/password?success";
     }

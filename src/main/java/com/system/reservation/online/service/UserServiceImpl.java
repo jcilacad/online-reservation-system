@@ -1,5 +1,6 @@
 package com.system.reservation.online.service;
 
+import com.system.reservation.online.dto.ChangePasswordDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.Role;
 import com.system.reservation.online.entity.User;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.awt.print.Pageable;
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -192,5 +194,12 @@ public class UserServiceImpl implements UserService {
 
         // Delete student
         userRepository.deleteById(studentId);
+    }
+
+    @Override
+    public void changePassword(Principal principal, ChangePasswordDto changePasswordDto) {
+
+
+
     }
 }
