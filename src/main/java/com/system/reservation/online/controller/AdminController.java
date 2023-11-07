@@ -1,5 +1,6 @@
 package com.system.reservation.online.controller;
 
+import com.system.reservation.online.dto.ChangePasswordDto;
 import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.Item;
@@ -253,7 +254,12 @@ public class AdminController {
 
 
     @GetMapping("/password")
-    public String changePassword () {
+    public String changePassword (Model model) {
+
+        // Initialize change password dto
+        ChangePasswordDto changePasswordDto = new ChangePasswordDto();
+
+        model.addAttribute("changePasswordDto", changePasswordDto);
 
         return "admin/change-password";
     }
