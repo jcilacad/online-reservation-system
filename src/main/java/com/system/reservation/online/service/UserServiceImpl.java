@@ -118,7 +118,7 @@ public class UserServiceImpl implements UserService {
         // Setting up a student number
         userDto.setStudentNumber(user.getStudentNumber());
 
-        // Settinghh up contact number
+        // Setting up contact number
         userDto.setContactNumber(user.getContactNumber());
 
         //  Setting up an email
@@ -197,9 +197,40 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changePassword(Principal principal, ChangePasswordDto changePasswordDto) {
+    public boolean changePassword(Principal principal, ChangePasswordDto changePasswordDto) {
+
+        // Get user email
+        String email = principal.getName();
+
+        // Get the user
+        User user = findUserByEmail(email);
+
+        // Get the password
+        String password = user.getPassword();
 
 
+        // Get fields from ChangePasswordDto
+        String currentPassword = changePasswordDto.getCurrentPassword();
+        String newPassword = changePasswordDto.getNewPassword();
+        String confirmNewPassword = changePasswordDto.getConfirmNewPassword();
 
+
+        // Compare the user's password to the current password
+        boolean isMatch = passwordEncoder.matches(currentPassword, password);
+
+        // If password match, do the condition
+        if (isMatch) {
+            if (newPassword.equals(confirmNewPassword)) {
+                // Set new password
+                user.setPassword(passwordEncoder.encode(newPassword));
+
+                // save the user with new password in DB
+                userRepository.save(user);
+            } else {
+               return false;
+            }
+        }
+
+        return isMatch;
     }
 }

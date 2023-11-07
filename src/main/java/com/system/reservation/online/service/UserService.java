@@ -36,5 +36,6 @@ public interface UserService {
 
     Page<User> findStudentByNameContaining(String name, Integer currentPage, Integer pageSize);
 
-    void changePassword(Principal principal, ChangePasswordDto changePasswordDto);
+    boolean changePassword(Principal principal, ChangePasswordDto changePasswordDto);
+
 }
