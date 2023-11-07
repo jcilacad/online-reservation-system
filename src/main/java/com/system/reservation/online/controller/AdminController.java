@@ -255,7 +255,7 @@ public class AdminController {
     @GetMapping("/password")
     public String changePassword () {
 
-        return null;
+        return "admin/change-password";
     }
 
 
