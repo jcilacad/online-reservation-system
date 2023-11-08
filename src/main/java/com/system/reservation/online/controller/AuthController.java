@@ -110,21 +110,13 @@ public class AuthController {
         // Change password
         boolean isMatch = userService.changePassword(principal, changePasswordDto);
 
-        if (httpServletRequest.isUserInRole(Role.ROLE_ADMIN.toString())) {
-            // If there's an error, display error response
-            if (!isMatch) {
-                return "redirect:/admins/password?error";
-            }
-
-            return "redirect:/admins/password?success";
-        } else {
-            // If there's an error, display error response
-            if (!isMatch) {
-                return "redirect:/students/password?error";
-            }
-
-            return "redirect:/students/password?success";
+        // If there's an error, display error response
+        if (!isMatch) {
+            return "redirect:/account/password?error";
         }
+
+        return "redirect:/account/password?success";
+
 
     }
 

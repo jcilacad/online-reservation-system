@@ -36,10 +36,12 @@ public class AuthControllerSecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/index/**").permitAll()
                         .requestMatchers("/default").hasAnyRole("ADMIN", "STUDENT")
+                        .requestMatchers("/account/**").hasAnyRole("ADMIN", "STUDENT")
                         .requestMatchers("/users/**").hasRole("ADMIN")
                         .requestMatchers("/students/**").hasRole("STUDENT")
                         .requestMatchers("/admins/**").hasRole("ADMIN")
                         .requestMatchers("/item-photos/**").hasRole("ADMIN")
+
 
                 )
                 .formLogin(form -> form
