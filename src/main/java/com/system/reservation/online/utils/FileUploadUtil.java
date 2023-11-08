@@ -1,4 +1,4 @@
-package com.system.reservation.online.util;
+package com.system.reservation.online.utils;
 
 import java.io.*;
 import java.nio.file.*;

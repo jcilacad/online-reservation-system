@@ -1,19 +1,15 @@
 package com.system.reservation.online.controller;
 
-import com.system.reservation.online.dto.ChangePasswordDto;
 import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.Item;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.service.ItemService;
 import com.system.reservation.online.service.UserService;
-import com.system.reservation.online.util.FileUploadUtil;
-import jakarta.persistence.Id;
+import com.system.reservation.online.utils.FileUploadUtil;
 import jakarta.validation.Valid;
-import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -22,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequestMapping("/admins")
