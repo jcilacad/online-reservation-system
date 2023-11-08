@@ -2,6 +2,7 @@ package com.system.reservation.online.controller;
 
 import com.system.reservation.online.dto.ChangePasswordDto;
 import com.system.reservation.online.dto.UserDto;
+import com.system.reservation.online.enums.Role;
 import com.system.reservation.online.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -68,39 +69,64 @@ public class AuthController {
     }
 
     @GetMapping("/account/password")
-    public String getChangePassword (Model model) {
+    public String getChangePassword(HttpServletRequest httpServletRequest,
+                                    Model model) {
 
         // Initialize change password dto
         ChangePasswordDto changePasswordDto = new ChangePasswordDto();
 
         model.addAttribute("changePasswordDto", changePasswordDto);
 
-        return "admin/change-password";
+        if (httpServletRequest.isUserInRole(Role.ROLE_ADMIN.toString())) {
+            return "admin/change-password";
+        } else {
+            return "student/change-password";
+        }
+
+
     }
 
     @PostMapping("account/password")
-    public String changePassword (Principal principal,
-                                  @ModelAttribute(name = "changePasswordDto") ChangePasswordDto changePasswordDto,
-                                  BindingResult result,
-                                  Model model) {
+    public String changePassword(Principal principal,
+                                 HttpServletRequest httpServletRequest,
+                                 @ModelAttribute(name = "changePasswordDto") ChangePasswordDto changePasswordDto,
+                                 BindingResult result,
+                                 Model model) {
+
 
         // field validation
         if (result.hasErrors()) {
             model.addAttribute("changePasswordDto", changePasswordDto);
-            return "admin/change-password";
+
+            if (httpServletRequest.isUserInRole(Role.ROLE_ADMIN.toString())) {
+                return "admin/change-password";
+            } else {
+                return "student/change-password";
+            }
+
         }
+
 
         // Change password
         boolean isMatch = userService.changePassword(principal, changePasswordDto);
 
-        // If there's an error, display error response
-        if (!isMatch) {
-            return "redirect:/admins/password?error";
+        if (httpServletRequest.isUserInRole(Role.ROLE_ADMIN.toString())) {
+            // If there's an error, display error response
+            if (!isMatch) {
+                return "redirect:/admins/password?error";
+            }
+
+            return "redirect:/admins/password?success";
+        } else {
+            // If there's an error, display error response
+            if (!isMatch) {
+                return "redirect:/students/password?error";
+            }
+
+            return "redirect:/students/password?success";
         }
 
-        return "redirect:/admins/password?success";
     }
-
 
 
 }
