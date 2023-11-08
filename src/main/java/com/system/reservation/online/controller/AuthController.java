@@ -61,7 +61,7 @@ public class AuthController {
             return "redirect:/admins/dashboard";
         } else {
             System.out.println("Student Account");
-            return "redirect:/students/items";
+            return "redirect:/students/dashboard";
         }
     }
 

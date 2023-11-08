@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/students")
 public class StudentController {
 
-    @GetMapping("/items")
+    @GetMapping("/dashboard")
     public String listOfItems() {
-        return "student/items";
+        return "student/dashboard";
     }
 
 
