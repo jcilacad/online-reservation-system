@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 @Controller
 @RequestMapping("/students")
 public class StudentController {
@@ -42,8 +47,14 @@ public class StudentController {
             items = itemService.findAllPaginated(page, 10);
         }
 
+        // Create a list for reservation count, min of 1 and max of 5
+        List<Integer> reservationCount = IntStream.rangeClosed(1, 5)
+                .boxed()
+                .collect(Collectors.toList());
+
         model.addAttribute("items", items);
         model.addAttribute("page", page);
+        model.addAttribute("reservationCount", reservationCount);
 
         return "student/items";
     }
