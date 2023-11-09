@@ -23,8 +23,8 @@ import java.io.IOException;
 @RequestMapping("/admins")
 public class AdminController {
 
-    UserService userService;
-    ItemService itemService;
+    private UserService userService;
+    private ItemService itemService;
 
     @Autowired
     public AdminController(UserService userService,
