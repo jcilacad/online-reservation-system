@@ -1,16 +1,51 @@
 package com.system.reservation.online.controller;
 
+import com.system.reservation.online.entity.Item;
+import com.system.reservation.online.service.ItemService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/students")
 public class StudentController {
 
+    private ItemService itemService;
+
+    @Autowired
+    public StudentController(ItemService itemService) {
+        this.itemService = itemService;
+    }
+
     @GetMapping("/dashboard")
     public String listOfItems() {
         return "student/dashboard";
+    }
+
+    @GetMapping("/items")
+    public String viewItems(@RequestParam(defaultValue = "0") Integer page,
+                            @RequestParam(name = "name", required = false) String name,
+                            Model model) {
+
+        // Get all items
+        Page<Item> items;
+
+        if (name != null) {
+            // If the name is present in the @RequestParam, display students that contains the name
+            items = itemService.findItemByNameContaining(name, page, 10);
+        } else {
+            // Otherwise, display the list of students
+            items = itemService.findAllPaginated(page, 10);
+        }
+
+        model.addAttribute("items", items);
+        model.addAttribute("page", page);
+
+        return "student/items";
     }
 
 
