@@ -66,7 +66,7 @@ public class StudentController {
 
         // Get item by id
         Item item = itemService.findById(itemId);
-        
+
         model.addAttribute("item", item);
 
         return null;
