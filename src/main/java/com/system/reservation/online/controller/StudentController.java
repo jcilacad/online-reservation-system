@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -57,6 +58,18 @@ public class StudentController {
         model.addAttribute("reservationCount", reservationCount);
 
         return "student/items";
+    }
+
+    @GetMapping("/items/{itemId}")
+    public String getItem (@PathVariable Long itemId,
+                           Model model) {
+
+        // Get item by id
+        Item item = itemService.findById(itemId);
+        
+        model.addAttribute("item", item);
+
+        return null;
     }
 
 
