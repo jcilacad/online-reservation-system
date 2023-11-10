@@ -96,7 +96,7 @@
                     <small class="card-text"><b>Description:</b> [[${item.description}]]</small>
 
                     <div class="d-grid gap-2 my-2">
-                        <button class="btn btn-danger" type="button">View</button>
+                        <a th:href="@{/students/items/{itemId}(itemId=${item.id})}" class="btn btn-danger" type="button">View</a>
                     </div>
                 </div>
 
