@@ -48,14 +48,11 @@ public class StudentController {
             items = itemService.findAllPaginated(page, 10);
         }
 
-        // Create a list for reservation count, min of 1 and max of 5
-        List<Integer> reservationCount = IntStream.rangeClosed(1, 5)
-                .boxed()
-                .collect(Collectors.toList());
+
 
         model.addAttribute("items", items);
         model.addAttribute("page", page);
-        model.addAttribute("reservationCount", reservationCount);
+
 
         return "student/items";
     }
@@ -67,9 +64,15 @@ public class StudentController {
         // Get item by id
         Item item = itemService.findById(itemId);
 
-        model.addAttribute("item", item);
+        // Create a list for reservation count, min of 1 and max of 5
+        List<Integer> reservationCount = IntStream.rangeClosed(1, 5)
+                .boxed()
+                .collect(Collectors.toList());
 
-        return null;
+        model.addAttribute("item", item);
+        model.addAttribute("reservationCount", reservationCount);
+
+        return "student/item";
     }
 
 

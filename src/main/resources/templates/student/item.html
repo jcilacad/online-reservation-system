@@ -58,7 +58,59 @@
 
     <a th:href="@{/students/items}" type="button" class="btn btn-info mb-4">Back</a>
 
+    <div class="card text-bg-warning mb-3 text-center" style="max-width: 100%;">
+        <div class="row g-0">
+            <img th:src="${item.photosImagePath}" class="img-fluid rounded-start" alt="item-photo" height="50%"
+                 width="50%">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${item.name}"></h5>
+                <p class="card-text" th:text="${item.description}"></p>
+                <p class="card-text"><b>Price: </b>₱[[${item.price}]]
+                    <br> <b>Size: </b>[[${item.size}]]
+                    <br> <b>Stock: </b>₱[[${item.quantity}]]</p>
 
+
+                <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                    <input placeholder="Select date" type="date" id="example" class="form-control">
+                    <label for="example">Choose the date for picking up your reserved item (Max of 1 Week)</label>
+                    <i class="fas fa-calendar input-prefix"></i>
+                </div>
+
+                <select class="form-select" aria-label="Default select example">
+                    <div th:each="answer : ${reservationCount}">
+                        <option th:value=${answer}>[[${answer}]]</option>
+                    </div>
+                </select>
+                <p>Number of items to reserve (Maximum of 5)</p>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Reserve
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to reserve the item ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-primary">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </div>
