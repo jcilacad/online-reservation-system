@@ -37,6 +37,9 @@ public class Item {
     @Column(name = "description")
     private String description;
 
+    @OneToOne(mappedBy = "item")
+    private Transaction transaction;
+
     public Item(String photos, String name, String size, Double price, Integer quantity, String description) {
         this.photos = photos;
         this.name = name;
