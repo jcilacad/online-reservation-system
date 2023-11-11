@@ -1,9 +1,17 @@
 package com.system.reservation.online.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "transactions")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Transaction {
 
     @Id
@@ -16,6 +24,10 @@ public class Transaction {
 
     @Column(name = "quantity")
     private Integer quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "id", nullable = false)
+    private User user;
 
 
 }
