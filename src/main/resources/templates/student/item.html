@@ -67,7 +67,7 @@
                 <p class="card-text" th:text="${item.description}"></p>
                 <p class="card-text"><b>Price: </b>₱[[${item.price}]]
                     <br> <b>Size: </b>[[${item.size}]]
-                    <br> <b>Stock: </b>₱[[${item.quantity}]]</p>
+                    <br> <b>Stock: </b>[[${item.quantity}]]</p>
 
 
                 <form th:action="@{/students/items/{itemId}(itemId=${item.id})}" method="POST">
