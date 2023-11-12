@@ -76,6 +76,7 @@ public class StudentController {
     @PostMapping("/items/{itemId}")
     public String reserveItem() {
 
+        System.out.println("reserve an item!");
 
         return null;
     }

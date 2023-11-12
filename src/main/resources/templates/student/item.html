@@ -70,7 +70,7 @@
                     <br> <b>Stock: </b>₱[[${item.quantity}]]</p>
 
 
-                <form action="@{/students/items/{itemId}(itemId=${item.id})" method="POST">
+                <form th:action="@{/students/items/{itemId}(itemId=${item.id})}" method="POST">
 
                     <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker"
                          inline="true">
