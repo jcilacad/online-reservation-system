@@ -70,16 +70,16 @@
                     <br> <b>Stock: </b>[[${item.quantity}]]</p>
 
 
-                <form th:action="@{/students/items/{itemId}(itemId=${item.id})}" method="POST">
+                <form th:object="${reservationDto}" th:action="@{/students/items/{itemId}(itemId=${item.id})}" method="POST">
 
                     <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker"
                          inline="true">
-                        <input placeholder="Select date" type="date" id="example" class="form-control">
+                        <input th:field="*{pickupDate}" placeholder="Select date" type="date" id="example" class="form-control">
                         <label for="example">Choose the date for picking up your reserved item (Max of 1 Week)</label>
                         <i class="fas fa-calendar input-prefix"></i>
                     </div>
 
-                    <select class="form-select" aria-label="Default select example">
+                    <select th:field="*{reserveItem}" class="form-select" aria-label="Default select example">
                         <div th:each="answer : ${reservationCount}">
                             <option th:value=${answer}>[[${answer}]]</option>
                         </div>
