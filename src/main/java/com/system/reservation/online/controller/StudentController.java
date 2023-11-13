@@ -79,11 +79,14 @@ public class StudentController {
 
 
     @PostMapping("/items/{itemId}")
-    public String reserveItem() {
+    public String reserveItem(@ModelAttribute(name = "reservationDto") ReservationDto reservationDto,
+                              @PathVariable Long itemId) {
 
+        System.out.println(reservationDto.getPickupDate());
+        System.out.println(reservationDto.getReserveItem());
         System.out.println("reserve an item!");
 
-        return null;
+        return "redirect:/students/items/" + itemId;
     }
 
 
