@@ -34,7 +34,7 @@ public class TransactionServiceImpl implements TransactionService{
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         // Get email
-        String email = (String) auth.getPrincipal();
+        String email = auth.getName();
 
         // Find user by email
         User user = userService.findUserByEmail(email);
