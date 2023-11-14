@@ -14,11 +14,13 @@ public class TransactionServiceImpl implements TransactionService{
 
     private UserService userService;
     private ItemService itemService;
+    private TransactionService transactionService;
 
     @Autowired
-    public TransactionServiceImpl(UserService userService, ItemService itemService) {
+    public TransactionServiceImpl(UserService userService, ItemService itemService, TransactionService transactionService) {
         this.userService = userService;
         this.itemService = itemService;
+        this.transactionService = transactionService;
     }
 
     @Override
@@ -42,7 +44,14 @@ public class TransactionServiceImpl implements TransactionService{
         int reserveItem = reservationDto.getReserveItem();
 
         // Initialize transaction
-        Transaction transaction = new Transaction(receivedDate, reserveItem, user, item);
+        Transaction transaction = new Transaction(receivedDate,
+                                                  reserveItem,
+                                                  user,
+                                                  item);
+
+
+        // Save transaction in database
+
 
 
 
