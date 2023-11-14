@@ -1,6 +1,8 @@
 package com.system.reservation.online.service;
 
 import com.system.reservation.online.dto.ReservationDto;
+import com.system.reservation.online.entity.Item;
+import com.system.reservation.online.entity.Transaction;
 import com.system.reservation.online.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -32,9 +34,15 @@ public class TransactionServiceImpl implements TransactionService{
         User user = userService.findUserByEmail(email);
 
         // Get current item by id
-        
+        Item item = itemService.findById(itemId);
 
 
+        // Get data from reservation dto
+        String receivedDate = reservationDto.getPickupDate();
+        Integer reserveItem = reservationDto.getReserveItem();
+
+        // Initialize transaction
+        Transaction transaction = new Transaction();
 
 
 
