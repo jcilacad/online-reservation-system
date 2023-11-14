@@ -55,10 +55,7 @@ public class TransactionServiceImpl implements TransactionService{
 
 
         // Save transaction in database
-
-
-
-
+        transactionRepository.save(transaction);
 
 
     }
