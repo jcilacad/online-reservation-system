@@ -39,10 +39,10 @@ public class TransactionServiceImpl implements TransactionService{
 
         // Get data from reservation dto
         String receivedDate = reservationDto.getPickupDate();
-        Integer reserveItem = reservationDto.getReserveItem();
+        int reserveItem = reservationDto.getReserveItem();
 
         // Initialize transaction
-        Transaction transaction = new Transaction();
+        Transaction transaction = new Transaction(receivedDate, reserveItem, user, item);
 
 
 
