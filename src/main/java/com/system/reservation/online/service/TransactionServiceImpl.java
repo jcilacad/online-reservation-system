@@ -4,6 +4,7 @@ import com.system.reservation.online.dto.ReservationDto;
 import com.system.reservation.online.entity.Item;
 import com.system.reservation.online.entity.Transaction;
 import com.system.reservation.online.entity.User;
+import com.system.reservation.online.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,13 +15,16 @@ public class TransactionServiceImpl implements TransactionService{
 
     private UserService userService;
     private ItemService itemService;
-    private TransactionService transactionService;
+
+    private TransactionRepository transactionRepository;
 
     @Autowired
-    public TransactionServiceImpl(UserService userService, ItemService itemService, TransactionService transactionService) {
+    public TransactionServiceImpl(UserService userService,
+                                  ItemService itemService,
+                                  TransactionRepository transactionRepository) {
         this.userService = userService;
         this.itemService = itemService;
-        this.transactionService = transactionService;
+        this.transactionRepository = transactionRepository;
     }
 
     @Override
