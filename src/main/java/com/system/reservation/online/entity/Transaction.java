@@ -33,5 +33,10 @@ public class Transaction {
     @JoinColumn(name = "item_id", referencedColumnName = "id")
     private Item item;
 
-
+    public Transaction(String receivedDate, Integer quantity, User user, Item item) {
+        this.receivedDate = receivedDate;
+        this.quantity = quantity;
+        this.user = user;
+        this.item = item;
+    }
 }
