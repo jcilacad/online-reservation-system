@@ -89,9 +89,14 @@ public class StudentController {
                               @PathVariable Long itemId) {
 
         // Reserve item
-        transactionService.reserveItem(reservationDto, itemId);
+        try {
+            transactionService.reserveItem(reservationDto, itemId);
+            return "redirect:/students/items/" + itemId + "?success";
+        } catch (Exception e) {
+            return "redirect:/students/items/" + itemId + "?error";
+        }
 
-        return "redirect:/students/items/" + itemId + "?success";
+
     }
 
 
