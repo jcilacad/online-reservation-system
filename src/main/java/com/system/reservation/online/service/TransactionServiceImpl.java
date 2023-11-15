@@ -58,6 +58,8 @@ public class TransactionServiceImpl implements TransactionService{
             throw new RuntimeException("The stock must be greater than reserve item");
         }
 
+        // Set the new stock
+        item.setQuantity(currentStock);
 
         // Initialize transaction
         Transaction transaction = new Transaction(receivedDate,
