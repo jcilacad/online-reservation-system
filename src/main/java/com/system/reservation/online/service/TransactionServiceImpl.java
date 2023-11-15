@@ -45,7 +45,19 @@ public class TransactionServiceImpl implements TransactionService{
 
         // Get data from reservation dto
         String receivedDate = reservationDto.getPickupDate();
-        int reserveItem = reservationDto.getReserveItem();
+        Integer reserveItem = reservationDto.getReserveItem();
+
+        // Get the current stock of item
+        Integer stock = item.getQuantity();
+
+        // Subtract the reserve item from the current stock of item
+        Integer currentStock = stock - reserveItem;
+
+        // If the difference is negative, throw an error
+        if (currentStock < 0) {
+            throw new RuntimeException("The stock must be greater than reserve item");
+        }
+
 
         // Initialize transaction
         Transaction transaction = new Transaction(receivedDate,
