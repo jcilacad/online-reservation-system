@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "items")
 @AllArgsConstructor
@@ -38,7 +40,7 @@ public class Item {
     private String description;
 
     @OneToOne(mappedBy = "item")
-    private Transaction transaction;
+    private List<Transaction> transaction;
 
     public Item(String photos, String name, String size, Double price, Integer quantity, String description) {
         this.photos = photos;
@@ -48,6 +50,8 @@ public class Item {
         this.quantity = quantity;
         this.description = description;
     }
+
+
 
     @Transient
     public String getPhotosImagePath() {
