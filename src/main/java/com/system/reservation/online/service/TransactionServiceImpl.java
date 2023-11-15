@@ -55,7 +55,7 @@ public class TransactionServiceImpl implements TransactionService{
 
         // If the difference is negative, throw an error
         if (currentStock < 0) {
-            throw new RuntimeException("The stock must be greater than reserve item");
+            throw new RuntimeException("The stock must be greater than the reserve item");
         }
 
         // Set the new stock
