@@ -58,6 +58,10 @@
 
     <a th:href="@{/students/items}" type="button" class="btn btn-info mb-4">Back</a>
 
+    <div th:if="${param.success}" class="alert alert-success" role="alert">
+        Successfully reserved an item!
+    </div>
+
     <div class="card text-bg-warning mb-3 text-center" style="max-width: 100%;">
         <div class="row g-0">
             <img th:src="${item.photosImagePath}" class="img-fluid rounded-start" alt="item-photo" height="50%"
