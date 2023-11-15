@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "items")
@@ -39,8 +40,8 @@ public class Item {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(mappedBy = "item")
-    private List<Transaction> transaction;
+    @OneToMany(mappedBy = "item")
+    private List<Transaction> transactions;
 
     public Item(String photos, String name, String size, Double price, Integer quantity, String description) {
         this.photos = photos;
