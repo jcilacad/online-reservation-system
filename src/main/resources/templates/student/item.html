@@ -62,6 +62,10 @@
         Successfully reserved an item!
     </div>
 
+    <div th:if="${param.error}" class="alert alert-danger" role="alert">
+        Error, insufficient stock!
+    </div>
+
     <div class="card text-bg-warning mb-3 text-center" style="max-width: 100%;">
         <div class="row g-0">
             <img th:src="${item.photosImagePath}" class="img-fluid rounded-start" alt="item-photo" height="50%"
