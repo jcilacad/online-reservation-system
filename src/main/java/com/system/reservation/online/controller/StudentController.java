@@ -91,7 +91,7 @@ public class StudentController {
         // Reserve item
         transactionService.reserveItem(reservationDto, itemId);
 
-        return "redirect:/students/items/" + itemId;
+        return "redirect:/students/items/" + itemId + "?success";
     }
 
 
