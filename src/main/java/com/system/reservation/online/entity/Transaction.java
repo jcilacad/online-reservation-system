@@ -43,9 +43,12 @@ public class Transaction {
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
-    public Transaction(String receivedDate, Integer quantity, User user, Item item) {
+    public Transaction(String receivedDate, Integer quantity, String orderingDate, String approvedDate, String cancelledDate, User user, Item item) {
         this.receivedDate = receivedDate;
         this.quantity = quantity;
+        this.orderingDate = orderingDate;
+        this.approvedDate = approvedDate;
+        this.cancelledDate = cancelledDate;
         this.user = user;
         this.item = item;
     }

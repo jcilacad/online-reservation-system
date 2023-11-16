@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class TransactionServiceImpl implements TransactionService{
 
@@ -61,9 +63,15 @@ public class TransactionServiceImpl implements TransactionService{
         // Set the new stock
         item.setQuantity(currentStock);
 
+        // Get the current date
+        LocalDate localDate = LocalDate.now();
+
         // Initialize transaction
         Transaction transaction = new Transaction(receivedDate,
                                                   reserveItem,
+                                                  localDate.toString(),
+                                                  " --- ",
+                                                  " --- ",
                                                   user,
                                                   item);
 
