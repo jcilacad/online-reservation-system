@@ -21,6 +21,7 @@ public class LoggingAspect {
     @After("execution(* com.system.reservation.online.service.TransactionServiceImpl.reserveItem(..))")
     public void recordTransactions() {
 
+
         System.out.println("Reserve an item!!!");
     }
 }

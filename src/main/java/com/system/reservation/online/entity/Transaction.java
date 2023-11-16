@@ -25,6 +25,16 @@ public class Transaction {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @Column(name = "ordering_date")
+    private String orderingDate;
+
+    @Column(name = "approved_date")
+    private String approvedDate;
+
+    @Column(name = "cancelled_date")
+    private String cancelledDate;   
+
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
