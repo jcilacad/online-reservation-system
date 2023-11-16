@@ -102,6 +102,8 @@ public class StudentController {
     @GetMapping("/transactions")
     public String viewTransactions() {
 
+        // Get transactions
+
         return "student/transactions";
     }
 

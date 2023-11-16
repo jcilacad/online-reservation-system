@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class TransactionServiceImpl implements TransactionService{
@@ -80,5 +81,10 @@ public class TransactionServiceImpl implements TransactionService{
         transactionRepository.save(transaction);
 
 
+    }
+
+    @Override
+    public List<Transaction> getAll() {
+        return transactionRepository.findAll();
     }
 }
