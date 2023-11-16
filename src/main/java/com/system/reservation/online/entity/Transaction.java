@@ -32,7 +32,7 @@ public class Transaction {
     private String approvedDate;
 
     @Column(name = "cancelled_date")
-    private String cancelledDate;   
+    private String cancelledDate;
 
 
     @ManyToOne
