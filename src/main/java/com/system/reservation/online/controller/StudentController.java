@@ -102,7 +102,7 @@ public class StudentController {
     @GetMapping("/transactions")
     public String viewTransactions() {
 
-        return null;
+        return "student/transactions";
     }
 
 
