@@ -96,7 +96,13 @@ public class StudentController {
             return "redirect:/students/items/" + itemId + "?error";
         }
 
+    }
 
+
+    @GetMapping("/transactions")
+    public String viewTransactions() {
+
+        return null;
     }
 
 
