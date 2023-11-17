@@ -101,10 +101,12 @@ public class StudentController {
 
 
     @GetMapping("/transactions")
-    public String viewTransactions() {
+    public String viewTransactions(Model model) {
 
         // Get transactions
         List<Transaction> transactions = transactionService.viewTransactions();
+
+        model.addAttribute("transactions", transactions);
 
         return "student/transactions";
     }

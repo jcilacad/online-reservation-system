@@ -71,13 +71,14 @@
             </tr>
             </thead>
             <tbody>
-            <!--                <tr th:each="">-->
-            <!--                    <td th:text=""></td>-->
-            <!--                    <td th:text=""></td>-->
-            <!--                    <td th:text=""></td>-->
-            <!--                    <td th:text=""></td>-->
-            <!--                    <td><a th:href="@{/admins/accounts/{studentId}(studentId=${user.id})}" type="button" class="btn btn-primary">View</a></td>-->
-            <!--                </tr>-->
+                            <tr th:each="transaction : ${transactions}">
+                                <td th:text="${transaction.id}"></td>
+                                <td th:text="${transaction.orderingDate}"></td>
+                                <td th:text="${transaction.approvedDate}"></td>
+                                <td th:text="${transaction.cancelledDate}"></td>
+                                <td ></td>
+                                <td><a href="" type="button" class="btn btn-primary">View</a></td>
+                            </tr>
             </tbody>
         </table>
     </div>
