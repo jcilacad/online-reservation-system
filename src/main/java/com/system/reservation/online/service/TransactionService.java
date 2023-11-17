@@ -9,5 +9,5 @@ public interface TransactionService {
 
     void reserveItem(ReservationDto reservationDto, Long itemId);
 
-    List<Transaction> getAll ();
+    void viewTransactions ();
 }

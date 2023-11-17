@@ -84,7 +84,17 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public List<Transaction> getAll() {
-        return transactionRepository.findAll();
+    public void viewTransactions() {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        // Get current email of user
+        String email = auth.getName();
+
+        // Get the current user by email
+        User user = userService.findUserByEmail(email);
+
+        // Get list of transactions of user
+        
     }
 }
