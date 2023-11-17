@@ -34,6 +34,9 @@ public class Transaction {
     @Column(name = "cancelled_date")
     private String cancelledDate;
 
+    @Column(name = "remarks")
+    private String remarks;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
