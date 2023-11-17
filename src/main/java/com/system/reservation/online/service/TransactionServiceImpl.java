@@ -95,6 +95,6 @@ public class TransactionServiceImpl implements TransactionService{
         User user = userService.findUserByEmail(email);
 
         // Get list of transactions of user
-        
+
     }
 }
