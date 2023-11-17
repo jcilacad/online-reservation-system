@@ -84,7 +84,7 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public void viewTransactions() {
+    public List<Transaction> viewTransactions() {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -97,6 +97,7 @@ public class TransactionServiceImpl implements TransactionService{
         // Get list of transactions of user
         List<Transaction> transactions = transactionRepository.findByUser(user);
 
-        
+        // return list of transactions to controller layer
+        return transactions;
     }
 }
