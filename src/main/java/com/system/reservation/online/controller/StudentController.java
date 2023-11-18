@@ -54,7 +54,6 @@ public class StudentController {
         }
 
 
-
         model.addAttribute("items", items);
         model.addAttribute("page", page);
 
