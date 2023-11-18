@@ -6,6 +6,8 @@ import com.system.reservation.online.entity.Transaction;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -100,5 +102,10 @@ public class TransactionServiceImpl implements TransactionService{
 
         // return list of transactions to controller layer
         return transactions;
+    }
+
+    @Override
+    public Page<Transaction> findAllPaginated(Integer currentPage, Integer pageSize) {
+        return transactionRepository.findAll(PageRequest.of(currentPage, pageSize));
     }
 }
