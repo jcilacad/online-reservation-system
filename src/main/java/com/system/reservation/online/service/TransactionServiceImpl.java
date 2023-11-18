@@ -7,6 +7,7 @@ import com.system.reservation.online.entity.User;
 import com.system.reservation.online.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -105,7 +106,15 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public Page<Transaction> findAllPaginated(Integer currentPage, Integer pageSize) {
-        return transactionRepository.findAll(PageRequest.of(currentPage, pageSize));
+    public Page<Transaction> findAllPaginated(Long studentId, Integer currentPage, Integer pageSize) {
+
+        // Find student by id
+        User user = userService.findByStudentId(studentId);
+
+        List<Transaction> transactionList = transactionRepository.findByUser(user);
+
+        Page<Transaction> page = new PageImpl<>(transactionList, PageRequest.of(currentPage, pageSize), transactionList.size());
+
+        return page;
     }
 }

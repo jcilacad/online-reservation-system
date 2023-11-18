@@ -11,7 +11,7 @@ public interface TransactionService {
 
     void reserveItem(ReservationDto reservationDto, Long itemId);
 
-    Page<Transaction> findAllPaginated(Integer currentPage, Integer pageSize);
+    Page<Transaction> findAllPaginated(Long studentId, Integer currentPage, Integer pageSize);
 
     List<Transaction> viewTransactions ();
 }
