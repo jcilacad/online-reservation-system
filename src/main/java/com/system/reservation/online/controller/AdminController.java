@@ -3,8 +3,10 @@ package com.system.reservation.online.controller;
 import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.Item;
+import com.system.reservation.online.entity.Transaction;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.service.ItemService;
+import com.system.reservation.online.service.TransactionService;
 import com.system.reservation.online.service.UserService;
 import com.system.reservation.online.utils.FileUploadUtil;
 import jakarta.validation.Valid;
@@ -25,12 +27,15 @@ public class AdminController {
 
     private UserService userService;
     private ItemService itemService;
+    private TransactionService transactionService;
 
     @Autowired
     public AdminController(UserService userService,
-                           ItemService itemService) {
+                           ItemService itemService,
+                           TransactionService transactionService) {
         this.userService = userService;
         this.itemService = itemService;
+        this.transactionService = transactionService;
     }
 
     @GetMapping({"/dashboard", "/", ""})
@@ -95,7 +100,8 @@ public class AdminController {
 
 
     @GetMapping("/accounts/{studentId}")
-    public String viewStudentDetails(@PathVariable Long studentId,
+    public String viewStudentDetails(@RequestParam(defaultValue = "0") Integer page,
+                                     @PathVariable Long studentId,
                                      Model model) {
 
         // Find student by id
@@ -103,6 +109,14 @@ public class AdminController {
 
         // Map user object to Dto
         UserDto studentDto = userService.mapUserToDto(student);
+
+
+        // Get transactions
+        Page<Transaction> transactions = transactionService.findAllPaginated(page, 10);;
+
+        model.addAttribute("transactions", transactions);
+        model.addAttribute("page", page);
+
 
         model.addAttribute("student", student);
         model.addAttribute("studentDto", studentDto);
