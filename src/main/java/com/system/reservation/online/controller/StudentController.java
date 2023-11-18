@@ -101,12 +101,14 @@ public class StudentController {
 
 
     @GetMapping("/transactions")
-    public String viewTransactions(Model model) {
+    public String viewTransactions(@RequestParam(defaultValue = "0") Integer page,
+                                   Model model) {
 
         // Get transactions
-        List<Transaction> transactions = transactionService.viewTransactions();
+        Page<Transaction> transactions = transactionService.findAllPaginated(page, 10);;
 
         model.addAttribute("transactions", transactions);
+        model.addAttribute("page", page);
 
         return "student/transactions";
     }
