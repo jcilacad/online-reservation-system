@@ -105,8 +105,14 @@ public class TransactionServiceImpl implements TransactionService{
         return transactions;
     }
 
+
     @Override
-    public Page<Transaction> findAllPaginated(Long studentId, Integer currentPage, Integer pageSize) {
+    public Page<Transaction> findAllPaginated(Integer currentPage, Integer pageSize) {
+        return transactionRepository.findAll(PageRequest.of(currentPage, pageSize));
+    }
+
+    @Override
+    public Page<Transaction> findAllPaginatedByStudentId(Long studentId, Integer currentPage, Integer pageSize) {
 
         // Find student by id
         User user = userService.findByStudentId(studentId);
