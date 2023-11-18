@@ -112,7 +112,7 @@ public class AdminController {
 
 
         // Get transactions
-        Page<Transaction> transactions = transactionService.findAllPaginated(page, 10);;
+        Page<Transaction> transactions = transactionService.findAllPaginated(page, 5);;
 
         model.addAttribute("transactions", transactions);
         model.addAttribute("page", page);
