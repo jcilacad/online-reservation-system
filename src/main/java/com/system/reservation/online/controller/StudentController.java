@@ -3,8 +3,10 @@ package com.system.reservation.online.controller;
 import com.system.reservation.online.dto.ReservationDto;
 import com.system.reservation.online.entity.Item;
 import com.system.reservation.online.entity.Transaction;
+import com.system.reservation.online.entity.User;
 import com.system.reservation.online.service.ItemService;
 import com.system.reservation.online.service.TransactionService;
+import com.system.reservation.online.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
@@ -24,12 +26,15 @@ public class StudentController {
 
     private ItemService itemService;
     private TransactionService transactionService;
+    private UserService userService;
 
     @Autowired
     public StudentController(ItemService itemService,
-                             TransactionService transactionService) {
+                             TransactionService transactionService,
+                             UserService userService) {
         this.itemService = itemService;
         this.transactionService = transactionService;
+        this.userService = userService;
     }
 
     @GetMapping("/dashboard")
@@ -103,8 +108,15 @@ public class StudentController {
     public String viewTransactions(@RequestParam(defaultValue = "0") Integer page,
                                    Model model) {
 
+        // Find user by the current logged in user
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        // Get user email
+        String email = auth.getName();
+
+
         // Get transactions
-        Page<Transaction> transactions = transactionService.findAllPaginated(page, 10);;
+        Page<Transaction> transactions = transactionService.findAllPaginatedByUser(page, 10);;
 
         model.addAttribute("transactions", transactions);
         model.addAttribute("page", page);

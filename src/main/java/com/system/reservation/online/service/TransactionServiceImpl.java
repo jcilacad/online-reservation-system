@@ -112,10 +112,7 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public Page<Transaction> findAllPaginatedByStudentId(Long studentId, Integer currentPage, Integer pageSize) {
-
-        // Find student by id
-        User user = userService.findByStudentId(studentId);
+    public Page<Transaction> findAllPaginatedByUser(User user, Integer currentPage, Integer pageSize) {
 
         List<Transaction> transactionList = transactionRepository.findByUser(user);
 
@@ -123,4 +120,5 @@ public class TransactionServiceImpl implements TransactionService{
 
         return page;
     }
+
 }
