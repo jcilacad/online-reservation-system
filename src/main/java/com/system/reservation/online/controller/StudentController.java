@@ -67,8 +67,8 @@ public class StudentController {
     }
 
     @GetMapping("/items/{itemId}")
-    public String getItem (@PathVariable Long itemId,
-                           Model model) {
+    public String getItem(@PathVariable Long itemId,
+                          Model model) {
 
         // Instantiate ReservationDto
         ReservationDto reservationDto = new ReservationDto();
@@ -114,16 +114,17 @@ public class StudentController {
         // Get user email
         String email = auth.getName();
 
+        // Get the current user
+        User user = userService.findUserByEmail(email);
 
         // Get transactions
-        Page<Transaction> transactions = transactionService.findAllPaginatedByUser(page, 10);;
+        Page<Transaction> transactions = transactionService.findAllPaginatedByUser(user, page, 10);
 
         model.addAttribute("transactions", transactions);
         model.addAttribute("page", page);
 
         return "student/transactions";
     }
-
 
 
 }
