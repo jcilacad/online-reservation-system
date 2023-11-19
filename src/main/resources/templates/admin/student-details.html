@@ -225,9 +225,12 @@
                     <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
                         <a class="page-link" th:href="@{/admins/accounts/{studentId}(studentId=${student.id}, page=${page - 1})}">Previous</a>
                     </li>
-                    <li class="page-item" th:each="i : ${#numbers.sequence(0, transactions.totalPages - 1)}"
+                    <li class="page-item" th:if="${transactions.totalPages > 0}" th:each="i : ${#numbers.sequence(0, transactions.totalPages - 1)}"
                         th:classappend="${page == i ? 'active' : ''}">
                         <a class="page-link" th:href="@{/admins/accounts/{studentId}(studentId=${student.id}, page=${i})}" th:text="${i + 1}"></a>
+                    </li>
+                    <li class="page-item" th:if="${transactions.totalPages == 0}">
+                        <a class="page-link" th:href="@{/admins/accounts/{studentId}(studentId=${student.id} ,page=0)}" th:text="1"></a>
                     </li>
                     <li class="page-item" th:classappend="${page == transactions.totalPages - 1 ? 'disabled' : ''}">
                         <a class="page-link" th:href="@{/admins/accounts/{studentId}(studentId=${student.id}, page=${page + 1})}">Next</a>
