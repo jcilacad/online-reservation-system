@@ -115,6 +115,9 @@ public class TransactionServiceImpl implements TransactionService{
     public Page<Transaction> findAllPaginatedByUserId(Long id, Integer currentPage, Integer pageSize) {
         List<Transaction> transactionList = transactionRepository.findByUser_Id(id);
 
+        // Ensure currentPage is not less than 0
+        currentPage = Math.max(currentPage, 0);
+
         int start = Math.min(currentPage * pageSize, transactionList.size());
         int end = Math.min(start + pageSize, transactionList.size());
 
