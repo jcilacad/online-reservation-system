@@ -118,7 +118,9 @@ public class StudentController {
         User user = userService.findUserByEmail(email);
 
         // Get transactions
-        Page<Transaction> transactions = transactionService.findAllPaginatedByUser(user, page, 10);
+        Page<Transaction> transactions = transactionService.findAllPaginatedByUserId(user.getId(), page, 10);
+
+        System.out.println(transactions.getTotalPages());
 
         model.addAttribute("transactions", transactions);
         model.addAttribute("page", page);

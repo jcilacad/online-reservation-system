@@ -84,28 +84,29 @@
             </tbody>
         </table>
 
-        <nav aria-label="Page navigation" class="my-4">
-            <ul class="pagination">
-                <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{/students/transactions(page=0)}">First</a>
-                </li>
-                <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{/students/transactions(page=${page - 1})}">Previous</a>
-                </li>
-                <li class="page-item" th:each="i : ${#numbers.sequence(0, transactions.totalPages - 1)}"
-                    th:classappend="${page == i ? 'active' : ''}">
-                    <a class="page-link" th:href="@{/students/transactions(page=${i})}" th:text="${i + 1}"></a>
-                </li>
-                <li class="page-item" th:classappend="${page == transactions.totalPages - 1 ? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{/students/transactions(page=${page + 1})}">Next</a>
-                </li>
-                <li class="page-item" th:classappend="${page == transactions.totalPages - 1 ? 'disabled' : ''}">
-                    <a class="page-link" th:href="@{/students/transactions(page=${transactions.totalPages - 1})}">Last</a>
-                </li>
-            </ul>
-        </nav>
 
     </div>
+
+    <nav aria-label="Page navigation" class="my-4">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/students/transactions(page=0)}">First</a>
+            </li>
+            <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/students/transactions(page=${page - 1})}">Previous</a>
+            </li>
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, transactions.totalPages - 1)}"
+                th:classappend="${page == i ? 'active' : ''}">
+                <a class="page-link" th:href="@{/students/transactions(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+            <li class="page-item" th:classappend="${page == transactions.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/students/transactions(page=${page + 1})}">Next</a>
+            </li>
+            <li class="page-item" th:classappend="${page == transactions.totalPages - 1 ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/students/transactions(page=${transactions.totalPages - 1})}">Last</a>
+            </li>
+        </ul>
+    </nav>
 
 
 </div>

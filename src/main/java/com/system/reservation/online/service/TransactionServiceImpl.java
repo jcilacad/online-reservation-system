@@ -99,7 +99,7 @@ public class TransactionServiceImpl implements TransactionService{
         User user = userService.findUserByEmail(email);
 
         // Get list of transactions of user
-        List<Transaction> transactions = transactionRepository.findByUser(user);
+        List<Transaction> transactions = transactionRepository.findByUser_Id(user.getId());
 
         // return list of transactions to controller layer
         return transactions;
@@ -112,11 +112,13 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public Page<Transaction> findAllPaginatedByUser(User user, Integer currentPage, Integer pageSize) {
+    public Page<Transaction> findAllPaginatedByUserId(Long id, Integer currentPage, Integer pageSize) {
+        List<Transaction> transactionList = transactionRepository.findByUser_Id(id);
 
-        List<Transaction> transactionList = transactionRepository.findByUser(user);
+        int start = Math.min(currentPage * pageSize, transactionList.size());
+        int end = Math.min(start + pageSize, transactionList.size());
 
-        Page<Transaction> page = new PageImpl<>(transactionList, PageRequest.of(currentPage, pageSize), transactionList.size());
+        Page<Transaction> page = new PageImpl<>(transactionList.subList(start, end), PageRequest.of(currentPage, pageSize), transactionList.size());
 
         return page;
     }

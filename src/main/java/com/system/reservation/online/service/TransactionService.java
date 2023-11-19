@@ -14,7 +14,7 @@ public interface TransactionService {
 
     Page<Transaction> findAllPaginated(Integer currentPage, Integer pageSize);
 
-    Page<Transaction> findAllPaginatedByUser(User user, Integer currentPage, Integer pageSize);
+    Page<Transaction> findAllPaginatedByUserId(Long id, Integer currentPage, Integer pageSize);
 
     List<Transaction> viewTransactions ();
 }
