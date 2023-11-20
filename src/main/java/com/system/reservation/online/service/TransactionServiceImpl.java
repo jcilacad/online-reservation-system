@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransactionServiceImpl implements TransactionService{
@@ -126,4 +127,11 @@ public class TransactionServiceImpl implements TransactionService{
         return page;
     }
 
+
+    @Override
+    public Transaction findById(Long id) {
+
+        return transactionRepository.findById(id).
+                orElseThrow(()-> new RuntimeException("Didn't find id - " + id));
+    }
 }

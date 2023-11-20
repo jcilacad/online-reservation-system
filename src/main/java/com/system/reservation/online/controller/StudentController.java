@@ -131,6 +131,8 @@ public class StudentController {
     @GetMapping("/transactions/{transactionId}")
     public String viewTransactionDetail (@PathVariable Long transactionId) {
 
+        // Get transcation by id
+        Transaction transaction = transactionService.findById(transactionId);
 
 
         return "student/transaction-details";
