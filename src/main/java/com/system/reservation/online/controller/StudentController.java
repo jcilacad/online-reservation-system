@@ -128,5 +128,11 @@ public class StudentController {
         return "student/transactions";
     }
 
+    @GetMapping("/transactions/{transcationId}")
+    public String viewTransactionDetail () {
+
+        return null;
+    }
+
 
 }
