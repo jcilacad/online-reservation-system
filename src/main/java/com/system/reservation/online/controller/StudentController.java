@@ -128,10 +128,12 @@ public class StudentController {
         return "student/transactions";
     }
 
-    @GetMapping("/transactions/{transcationId}")
-    public String viewTransactionDetail () {
+    @GetMapping("/transactions/{transactionId}")
+    public String viewTransactionDetail (@PathVariable Long transactionId) {
 
-        return null;
+
+
+        return "student/transaction-details";
     }
 
 
