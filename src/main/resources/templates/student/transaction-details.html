@@ -57,7 +57,21 @@
     <a th:href="@{/students/dashboard}" type="button" class="btn btn-info mb-4">Back</a>
     <h1>Transaction Details</h1>
 
-
+    <div class="card mb-3 my-5" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img th:src="${item.photosImagePath}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">[[${item.name}]]</h5>
+                    <p class="card-text">[[${item.size}]]</p>
+                    <p class="card-text">₱ [[${item.price}]]</p>
+                    <p class="card-text">[[${item.description}]]</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container table-responsive" style="margin-top: 20px">
 

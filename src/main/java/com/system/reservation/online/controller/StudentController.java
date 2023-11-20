@@ -129,11 +129,16 @@ public class StudentController {
     }
 
     @GetMapping("/transactions/{transactionId}")
-    public String viewTransactionDetail (@PathVariable Long transactionId) {
+    public String viewTransactionDetail (@PathVariable Long transactionId,
+                                         Model model) {
 
         // Get transcation by id
         Transaction transaction = transactionService.findById(transactionId);
+        // Get item by transaction
+        Item item = transaction.getItem();
 
+        model.addAttribute("transaction", transaction);
+        model.addAttribute("item", item);
 
         return "student/transaction-details";
     }
