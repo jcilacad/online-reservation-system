@@ -57,6 +57,10 @@
     <a th:href="@{/students/dashboard}" type="button" class="btn btn-info mb-4">Back</a>
     <h1>Transaction Details</h1>
 
+    <div th:if="${param.cancelled}" class="alert alert-success" role="alert">
+        Successfully cancelled the transaction
+    </div>
+
     <div th:if="${transaction.remarks == 'Pending'}" class="d-flex justify-content-end">
         <form th:action="@{/students/transactions/{transactionId}(transactionId=${transaction.id})}" method="POST">
             <!-- Button trigger modal -->
