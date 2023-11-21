@@ -148,7 +148,7 @@ public class StudentController {
     public String cancelTransaction(@PathVariable Long transactionId) {
 
         transactionService.cancelTransaction(transactionId);
-        return null;
+        return "redirect:/students/transactions/" + transactionId + "?cancelled";
     }
 
 
