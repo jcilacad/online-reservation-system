@@ -144,4 +144,11 @@ public class StudentController {
     }
 
 
+    @PostMapping("/transactions/{transactionId}")
+    public String cancelTransaction(@PathVariable Long transactionId) {
+        
+        return null;
+    }
+
+
 }
