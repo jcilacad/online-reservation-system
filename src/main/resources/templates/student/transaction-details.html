@@ -57,6 +57,8 @@
     <a th:href="@{/students/dashboard}" type="button" class="btn btn-info mb-4">Back</a>
     <h1>Transaction Details</h1>
 
+    <div th:if="${transaction.remarks == 'Pending'}" class="d-flex justify-content-end"><button type="button" class="btn btn-danger">Cancel</button></div>
+
     <div class="card my-5" style="width: 100%;">
         <div class="card-header">
             <b>Id:</b> [[${transaction.id}]]
