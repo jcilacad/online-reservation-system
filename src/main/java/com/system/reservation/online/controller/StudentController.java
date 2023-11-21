@@ -146,7 +146,8 @@ public class StudentController {
 
     @PostMapping("/transactions/{transactionId}")
     public String cancelTransaction(@PathVariable Long transactionId) {
-        
+
+        transactionService.cancelTransaction(transactionId);
         return null;
     }
 

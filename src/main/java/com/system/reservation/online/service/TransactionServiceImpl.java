@@ -134,4 +134,33 @@ public class TransactionServiceImpl implements TransactionService{
         return transactionRepository.findById(id).
                 orElseThrow(()-> new RuntimeException("Didn't find id - " + id));
     }
+
+    @Override
+    public void cancelTransaction(Long transactionId) {
+
+        // Find transaction by id
+        Transaction transaction = findById(transactionId);
+
+        // Get the number of reserved item
+        Integer reservedItem = transaction.getQuantity();
+
+        // Get the item
+        Item item = transaction.getItem();
+
+        // Put the reserved item count on the current stock of item
+        item.setQuantity(item.getQuantity() + reservedItem);
+
+        // Set the remarks status as "Cancelled"
+        transaction.setRemarks("Cancelled");
+
+        // Get the current date
+        LocalDate localDate = LocalDate.now();
+
+        // Set the cancelled date
+        transaction.setCancelledDate(localDate.toString());
+
+        // Save the transaction in database
+        transactionRepository.save(transaction);
+
+    }
 }
