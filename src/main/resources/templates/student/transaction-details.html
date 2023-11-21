@@ -57,6 +57,18 @@
     <a th:href="@{/students/dashboard}" type="button" class="btn btn-info mb-4">Back</a>
     <h1>Transaction Details</h1>
 
+    <div class="card my-5" style="width: 100%;">
+        <div class="card-header">
+            <b>Id:</b> [[${transaction.id}]]
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Remarks:</b> [[${transaction.remarks}]]</li>
+            <li class="list-group-item"><b>Ordering Date:</b> [[${transaction.orderingDate}]]</li>
+            <li class="list-group-item"><b>Approved Date:</b> [[${transaction.approvedDate}]]</li>
+            <li class="list-group-item"><b>Cancelled Date:</b> [[${transaction.cancelledDate}]]</li>
+        </ul>
+    </div>
+
     <div class="card mb-3 my-5" style="max-width: 100%;">
         <div class="row g-0">
             <div class="col-md-4">
@@ -65,9 +77,11 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">[[${item.name}]]</h5>
-                    <p class="card-text">[[${item.size}]]</p>
-                    <p class="card-text">₱ [[${item.price}]]</p>
-                    <p class="card-text">[[${item.description}]]</p>
+                    <br><br>
+                    <p class="card-text"><b>Reserved Item: </b>[[${transaction.quantity}]]</p>
+                    <p class="card-text"><b>Size: </b>[[${item.size}]]</p>
+                    <p class="card-text"><b>Price: </b>₱ [[${item.price}]]</p>
+                    <p class="card-text"><b>Description: </b>[[${item.description}]]</p>
                 </div>
             </div>
         </div>
