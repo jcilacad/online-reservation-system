@@ -93,14 +93,17 @@
             </tr>
             </thead>
             <tbody>
-<!--            <tr th:each="user : ${users.content}">-->
-<!--                <td th:text="${user.studentNumber}"></td>-->
-<!--                <td th:text="${user.name}"></td>-->
-<!--                <td th:text="${user.email}"></td>-->
-<!--                <td th:text="${user.contactNumber}"></td>-->
-<!--                <td><a th:href="@{/admins/accounts/{studentId}(studentId=${user.id})}" type="button"-->
-<!--                       class="btn btn-primary">View</a></td>-->
-<!--            </tr>-->
+            <tr th:each="transaction : ${transactions}">
+                <td th:text="${transaction.id}"></td>
+                <td th:text="${transaction.user.email}"></td>
+                <td th:text="${transaction.item.name}"></td>
+                <td th:text="${transaction.orderingDate}"></td>
+                <td th:text="${transaction.receivedDate}"></td>
+                <td th:text="${transaction.user.contactNumber}"></td>
+                <td th:text="${transaction.remarks}"></td>
+                <td><a type="button"
+                       class="btn btn-primary">View</a></td>
+            </tr>
             </tbody>
         </table>
     </div>
