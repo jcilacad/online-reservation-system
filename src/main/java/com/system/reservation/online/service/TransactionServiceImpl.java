@@ -163,4 +163,9 @@ public class TransactionServiceImpl implements TransactionService{
         transactionRepository.save(transaction);
 
     }
+
+    @Override
+    public Transaction getAllTransactions() {
+        return null;
+    }
 }

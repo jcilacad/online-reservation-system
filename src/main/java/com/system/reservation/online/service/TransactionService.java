@@ -19,4 +19,6 @@ public interface TransactionService {
     List<Transaction> viewTransactions ();
 
     void cancelTransaction(Long transactionId);
+
+    Transaction getAllTransactions();
 }
