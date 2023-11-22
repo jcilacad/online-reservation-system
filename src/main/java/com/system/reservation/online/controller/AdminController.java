@@ -260,5 +260,11 @@ public class AdminController {
         return "redirect:/admins/items?deleted";
     }
 
+    @GetMapping("/transactions")
+    public String getTransactions() {
+
+        return null;
+    }
+
 
 }
