@@ -263,7 +263,7 @@ public class AdminController {
     @GetMapping("/transactions")
     public String getTransactions() {
 
-        return null;
+        return "admin/transactions";
     }
 
 
