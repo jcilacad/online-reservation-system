@@ -165,7 +165,7 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public Transaction getAllTransactions() {
-        return null;
+    public List<Transaction> getAllTransactions() {
+        return transactionRepository.findAll();
     }
 }
