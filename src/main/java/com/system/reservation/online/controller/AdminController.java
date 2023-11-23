@@ -262,13 +262,25 @@ public class AdminController {
     }
 
     @GetMapping("/transactions")
-    public String getTransactions(Model model) {
+    public String getTransactions(@RequestParam(defaultValue = "0") Integer page,
+                                  @RequestParam(name = "name", required = false) String name,
+                                  Model model) {
 
-        // Get list of transactions
-        List<Transaction> transactions = transactionService.getAllTransactions();
+        // Get all transactions
+        Page<Item> items;
 
-        model.addAttribute("transactions", transactions);
+        if (name != null) {
+            // If the name is present in the @RequestParam, display students that contains the name
+            items = itemService.findItemByNameContaining(name, page, 10);
+        } else {
+            // Otherwise, display the list of students
+            items = itemService.findAllPaginated(page, 10);
+        }
 
+        model.addAttribute("items", items);
+        model.addAttribute("page", page);
+
+        
         return "admin/transactions";
     }
 
