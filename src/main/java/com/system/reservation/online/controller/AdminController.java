@@ -267,20 +267,20 @@ public class AdminController {
                                   Model model) {
 
         // Get all transactions
-        Page<Item> items;
+        Page<Transaction> transacitons;
 
         if (name != null) {
             // If the name is present in the @RequestParam, display students that contains the name
-            items = itemService.findItemByNameContaining(name, page, 10);
+            transacitons = itemService.findItemByNameContaining(name, page, 10);
         } else {
             // Otherwise, display the list of students
-            items = itemService.findAllPaginated(page, 10);
+            transacitons = itemService.findAllPaginated(page, 10);
         }
 
-        model.addAttribute("items", items);
+        model.addAttribute("transactions", transacitons);
         model.addAttribute("page", page);
 
-        
+
         return "admin/transactions";
     }
 
