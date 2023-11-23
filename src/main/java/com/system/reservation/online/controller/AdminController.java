@@ -271,10 +271,10 @@ public class AdminController {
 
         if (name != null) {
             // If the name is present in the @RequestParam, display students that contains the name
-            transacitons = itemService.findItemByNameContaining(name, page, 10);
+            transacitons = transactionService.findItemByNameContaining(name, page, 10);
         } else {
             // Otherwise, display the list of students
-            transacitons = itemService.findAllPaginated(page, 10);
+            transacitons = transactionService.findAllPaginated(page, 10);
         }
 
         model.addAttribute("transactions", transacitons);

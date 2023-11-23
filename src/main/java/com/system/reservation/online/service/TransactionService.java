@@ -21,4 +21,6 @@ public interface TransactionService {
     void cancelTransaction(Long transactionId);
 
     List<Transaction> getAllTransactions();
+
+    Page<Transaction> findByItemByNameContaining(String name);
 }
