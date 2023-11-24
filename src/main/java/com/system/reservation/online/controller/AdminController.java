@@ -284,5 +284,11 @@ public class AdminController {
         return "admin/transactions";
     }
 
+    @GetMapping("/transactions/{transactionId}")
+    public String viewTransaction(@PathVariable Long transactionId) {
+        
+        return null;
+    }
+
 
 }
