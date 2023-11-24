@@ -116,7 +116,7 @@
             <li class="page-item" th:classappend="${page == 0 ? 'disabled' : ''}">
                 <a class="page-link" th:href="@{/admins/transactions(page=${page - 1})}">Previous</a>
             </li>
-            <li class="page-item" th:each="i : ${#numbers.sequence(0, users.totalPages - 1)}"
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, transactions.totalPages - 1)}"
                 th:classappend="${page == i ? 'active' : ''}">
                 <a class="page-link" th:href="@{/admins/transactions(page=${i})}" th:text="${i + 1}"></a>
             </li>
