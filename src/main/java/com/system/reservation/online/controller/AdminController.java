@@ -285,9 +285,15 @@ public class AdminController {
     }
 
     @GetMapping("/transactions/{transactionId}")
-    public String viewTransaction(@PathVariable Long transactionId) {
+    public String viewTransaction(@PathVariable Long transactionId,
+                                  Model model) {
 
-        return null;
+        //  Get transaction by id
+        Transaction transaction =  transactionService.findById(transactionId);
+
+        model.addAttribute("transaction", transaction);
+
+        return "admin/transaction-details";
     }
 
 
