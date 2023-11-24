@@ -286,7 +286,7 @@ public class AdminController {
 
     @GetMapping("/transactions/{transactionId}")
     public String viewTransaction(@PathVariable Long transactionId) {
-        
+
         return null;
     }
 
