@@ -84,17 +84,31 @@
                 </div>
             </div>
         </div>
-    
+
         <div class="col-sm-6 col-md-3">
-            <div class="card text-bg-success mb-3" style="max-width: 28rem;">
-                <div class="card-header">[[${transaction.user.name}]]</div>
+            <div class="card text-bg-success mb-3 mr-3" style="max-width: 28rem;">
+                <div class="card-header">Name: [[${transaction.user.name}]]</div>
                 <div class="card-body">
-                    <h5 class="card-title">[[${transaction.user.studentNumber}]]</h5>
-                    <p class="card-text">[[${transaction.user.email}]]</p>
-                    <p class="card-text">[[${transaction.user.contactNumber}]]</p>
+                    <h5 class="card-title">Student Number: [[${transaction.user.studentNumber}]]</h5>
+                    <p class="card-text">Email Address: [[${transaction.user.email}]]</p>
+                    <p class="card-text">Contact Number: [[${transaction.user.contactNumber}]]</p>
                 </div>
             </div>
         </div>
+
+        <div class="col-sm-6 col-md-3">
+            <div class="card text-bg-info mb-3" style="max-width: 28rem;">
+                <div class="card-header">Status: [[${transaction.remarks}]]</div>
+                <div class="card-body">
+                    <h5 class="card-title">Quantity: [[${transaction.quantity}]]</h5>
+                    <p class="card-text">Ordering Date: [[${transaction.orderingDate}]]</p>
+                    <p class="card-text">Pickup Date: [[${transaction.receivedDate}]]</p>
+                    <p class="card-text">Approved Date: [[${transaction.approvedDate}]]</p>
+                    <p class="card-text">Cancelled Date: [[${transaction.cancelledDate}]]</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
