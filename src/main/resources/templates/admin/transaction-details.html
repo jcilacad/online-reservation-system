@@ -66,11 +66,11 @@
     </div>
 
     <div class="row g-0 text-center">
-        <div class="col-sm-6 col-md-8">
-            <div class="card mb-3" style="max-width: 770px;">
+        <div class="col-sm-6 col-md-6">
+            <div class="card mb-3" style="max-width: 600px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img th:src="${transaction.item.photosImagePath}" class="img-fluid rounded-start" alt="...">
+                        <img th:src="${transaction.item.photosImagePath}" height="100%" class="img-fluid rounded-start" alt="item">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -84,12 +84,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 col-md-4">
-            <div class="card text-bg-success mb-3" style="max-width: 22rem;">
-                <div class="card-header">Header</div>
+    
+        <div class="col-sm-6 col-md-3">
+            <div class="card text-bg-success mb-3" style="max-width: 28rem;">
+                <div class="card-header">[[${transaction.user.name}]]</div>
                 <div class="card-body">
-                    <h5 class="card-title">Success card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">[[${transaction.user.studentNumber}]]</h5>
+                    <p class="card-text">[[${transaction.user.email}]]</p>
+                    <p class="card-text">[[${transaction.user.contactNumber}]]</p>
                 </div>
             </div>
         </div>
