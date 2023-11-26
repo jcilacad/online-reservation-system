@@ -302,7 +302,7 @@ public class AdminController {
         // Approve transaction
         transactionService.approveTransaction(transactionId);
 
-        return "redirect:/transactions/" + transactionId + "?approve";
+        return "redirect:/admins/transactions/" + transactionId + "?approve";
     }
 
 

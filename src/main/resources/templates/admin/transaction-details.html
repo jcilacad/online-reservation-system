@@ -58,8 +58,12 @@
 
     <a th:href="@{/admins/transactions}" type="button" class="btn btn-info mb-4">Back</a>
 
-    <div class="d-flex">
 
+    <div th:if="${param.approve}" class="alert alert-success" role="alert">
+        Successfully approved a transaction
+    </div>
+
+    <div class="d-flex">
 
         <div class="flex-grow-1"><h3>Transaction Details</h3></div>
 
