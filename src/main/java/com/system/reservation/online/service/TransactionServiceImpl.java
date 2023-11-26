@@ -181,6 +181,17 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public void approveTransaction(Long transactionId) {
-        
+
+        // Get transaction by transactionId
+        Transaction transaction = transactionRepository
+                .findById(transactionId)
+                .orElseThrow(() -> new RuntimeException("Id not fount - " + transactionId));
+
+
+        // Change the status of transaction to approve
+        transaction.setRemarks("Approved");
+
+        // Save the newly updated transaction to database
+        transactionRepository.save(transaction);
     }
 }
