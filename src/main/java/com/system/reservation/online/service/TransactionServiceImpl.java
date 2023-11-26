@@ -160,6 +160,9 @@ public class TransactionServiceImpl implements TransactionService{
         // Put the reserved item count on the current stock of item
         item.setQuantity(item.getQuantity() + reservedItem);
 
+        // Set the quantity for transaction to 0
+        transaction.setQuantity(0);
+
         // Set the remarks status as "Cancelled"
         transaction.setRemarks("Cancelled");
 
