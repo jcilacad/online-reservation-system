@@ -63,6 +63,10 @@
         Successfully approved a transaction
     </div>
 
+    <div th:if="${param.cancel}" class="alert alert-success" role="alert">
+        Successfully cancelled the transaction
+    </div>
+
     <div class="d-flex">
 
         <div class="flex-grow-1"><h3>Transaction Details</h3></div>

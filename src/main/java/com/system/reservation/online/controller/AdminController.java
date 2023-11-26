@@ -311,7 +311,7 @@ public class AdminController {
         // Cancel transaction
         transactionService.cancelTransaction(transactionId);
 
-        return "redirect:/admins/transactions/" + transactionId;
+        return "redirect:/admins/transactions/" + transactionId + "?cancel";
     }
 
 
