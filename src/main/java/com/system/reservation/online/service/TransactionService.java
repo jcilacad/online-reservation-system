@@ -23,4 +23,7 @@ public interface TransactionService {
     List<Transaction> getAllTransactions();
 
     Page<Transaction> findByItemByNameContaining(String name, Integer currentPage, Integer pageSize);
+
+    void approveTransaction(Long transactionId);
+
 }

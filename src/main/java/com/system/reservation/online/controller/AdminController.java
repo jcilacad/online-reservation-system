@@ -296,5 +296,14 @@ public class AdminController {
         return "admin/transaction-details";
     }
 
+    @PostMapping("/transactions/{transactionId}")
+    public String approveTransaction(@PathVariable Long transactionId) {
+
+        // Approve transaction
+        transactionService.approveTransaction(transactionId);
+
+        return "redirect:/transactions/" + transactionId + "?approve";
+    }
+
 
 }
