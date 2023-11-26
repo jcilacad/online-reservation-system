@@ -70,7 +70,8 @@
             <div class="card mb-3" style="max-width: 600px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img th:src="${transaction.item.photosImagePath}" height="100%" class="img-fluid rounded-start" alt="item">
+                        <img th:src="${transaction.item.photosImagePath}" height="100%" class="img-fluid rounded-start"
+                             alt="item">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -78,7 +79,8 @@
                             <p class="card-text">[[${transaction.item.price}]]</p>
                             <p class="card-text">[[${transaction.item.size}]]</p>
                             <p class="card-text">[[${transaction.item.quantity}]]</p>
-                            <p class="card-text"><small class="text-body-secondary">[[${transaction.item.description}]]</small></p>
+                            <p class="card-text"><small
+                                    class="text-body-secondary">[[${transaction.item.description}]]</small></p>
                         </div>
                     </div>
                 </div>
@@ -110,29 +112,34 @@
         </div>
 
         <div class="d-grid gap-2 my-3">
+
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Approve
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Approve Transaction</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to approve the transaction of student ?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                            <button type="button" class="btn btn-primary">Yes</button>
+            <form method="POST" th:action="@{/admins/transactions/{transactionId}(transactionId=${transaction.id})}">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Approve Transaction</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to approve the transaction of student ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                <button type="submit" class="btn btn-primary">Yes</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
 
             <!-- Button trigger modal -->
@@ -141,7 +148,8 @@
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -160,11 +168,9 @@
             </div>
 
 
-
         </div>
 
     </div>
-
 
 
 </div>
