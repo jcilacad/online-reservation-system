@@ -151,7 +151,7 @@
 
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            <button type="button" th:class="${transaction.remarks == 'Cancelled'} ? 'btn btn-danger disabled' : 'btn btn-danger'" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                 Cancel
             </button>
 
