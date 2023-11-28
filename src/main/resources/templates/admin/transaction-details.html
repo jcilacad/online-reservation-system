@@ -122,9 +122,17 @@
         <div class="d-grid gap-2 my-3">
 
             <!-- Button trigger modal -->
-            <button type="button" th:class="${transaction.remarks == 'Cancelled'} ? 'btn btn-primary disabled' : 'btn btn-primary'" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Approve
-            </button>
+            <div th:if="${transaction.remarks == 'Approved'}">
+
+            </div>
+
+            <div th:unless="${transaction.remarks == 'Approved'}" class="d-grid gap-2 my-3">
+                <button type="button"
+                        th:class="${transaction.remarks == 'Cancelled'} ? 'btn btn-primary disabled' : 'btn btn-primary'"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Approve
+                </button>
+            </div>
 
             <!-- Modal -->
             <form method="POST" th:action="@{/admins/transactions/{transactionId}(transactionId=${transaction.id})}">
@@ -151,12 +159,15 @@
 
 
             <!-- Button trigger modal -->
-            <button type="button" th:class="${transaction.remarks == 'Cancelled'} ? 'btn btn-danger disabled' : 'btn btn-danger'" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            <button type="button"
+                    th:class="${transaction.remarks == 'Cancelled'} ? 'btn btn-danger disabled' : 'btn btn-danger'"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal2">
                 Cancel
             </button>
 
             <!-- Modal -->
-            <form th:action="@{/admins/transactions/{transactionId}/cancel(transactionId=${transaction.id})}" method="POST">
+            <form th:action="@{/admins/transactions/{transactionId}/cancel(transactionId=${transaction.id})}"
+                  method="POST">
                 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
