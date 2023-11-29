@@ -317,29 +317,7 @@ public class AdminController {
         return "redirect:/admins/transactions/" + transactionId + "?cancel";
     }
 
-    @Scheduled(fixedRate = 5000)
-    public void overDueItem() {
 
-        // Define the date format
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate currentDate = LocalDate.now();
-
-
-        // Get all the transactions and get its date
-        List<Transaction> transactions = transactionService.getAllTransactions();
-
-        // Make the transaction overdue if the ordering date
-        transactions.stream()
-                .forEach(transaction -> {
-                    // Convert string to LocalDate
-                    LocalDate orderingDate = LocalDate.parse(transaction.getOrderingDate(), formatter);
-                    if (currentDate.isBefore(orderingDate)) {
-                        transaction.setRemarks("Overdue");
-                    }
-                });
-
-
-    }
 
 
 }

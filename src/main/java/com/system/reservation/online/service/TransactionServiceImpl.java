@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -196,5 +198,29 @@ public class TransactionServiceImpl implements TransactionService{
 
         // Save the newly updated transaction to database
         transactionRepository.save(transaction);
+    }
+
+    @Scheduled(fixedRate = 5000)
+    public void overDueItem() {
+
+        // Define the date format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate currentDate = LocalDate.now();
+
+
+        // Get all the transactions and get its date
+        List<Transaction> transactions = transactionRepository.findAll();
+
+        // Make the transaction overdue if the ordering date
+        transactions.stream()
+                .forEach(transaction -> {
+                    // Convert string to LocalDate
+                    LocalDate orderingDate = LocalDate.parse(transaction.getOrderingDate(), formatter);
+                    if (orderingDate.isBefore(currentDate)) {
+                        transaction.setRemarks("Overdue");
+                    }
+                });
+
+        transactionRepository.saveAll(transactions);
     }
 }

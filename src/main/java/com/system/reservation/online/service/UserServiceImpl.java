@@ -3,6 +3,7 @@ package com.system.reservation.online.service;
 import com.system.reservation.online.dto.ChangePasswordDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.Role;
+import com.system.reservation.online.entity.Transaction;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.repository.RoleRepository;
 import com.system.reservation.online.repository.UserRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +19,8 @@ import org.springframework.stereotype.Service;
 
 import java.awt.print.Pageable;
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -233,4 +237,6 @@ public class UserServiceImpl implements UserService {
 
         return isMatch;
     }
+
+
 }
