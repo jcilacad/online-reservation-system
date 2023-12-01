@@ -218,6 +218,15 @@ public class TransactionServiceImpl implements TransactionService{
                     LocalDate pickUpDate = LocalDate.parse(transaction.getReceivedDate(), formatter);
                     if (pickUpDate.isBefore(currentDate)) {
                         transaction.setRemarks("Overdue");
+
+                        // Get the current item
+                        Item item = transaction.getItem();
+
+                        // Get the number of ordered items
+                        Integer quantity = transaction.getQuantity();
+
+                        // Bring back the ordered items to the stock of items
+                        item.setQuantity(item.getQuantity() + quantity);
                     }
                 });
 
