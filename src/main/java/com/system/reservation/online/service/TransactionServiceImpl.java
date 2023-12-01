@@ -215,8 +215,8 @@ public class TransactionServiceImpl implements TransactionService{
         transactions.stream()
                 .forEach(transaction -> {
                     // Convert string to LocalDate
-                    LocalDate orderingDate = LocalDate.parse(transaction.getOrderingDate(), formatter);
-                    if (orderingDate.isBefore(currentDate)) {
+                    LocalDate pickUpDate = LocalDate.parse(transaction.getReceivedDate(), formatter);
+                    if (pickUpDate.isBefore(currentDate)) {
                         transaction.setRemarks("Overdue");
                     }
                 });
