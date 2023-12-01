@@ -193,6 +193,12 @@ public class TransactionServiceImpl implements TransactionService{
                 .orElseThrow(() -> new RuntimeException("Id not fount - " + transactionId));
 
 
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Set the approved date to current date
+        transaction.setApprovedDate(currentDate.toString());
+
         // Change the status of transaction to approve
         transaction.setRemarks("Approved");
 
