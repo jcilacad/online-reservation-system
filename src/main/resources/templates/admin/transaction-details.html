@@ -128,7 +128,7 @@
 
             <div th:unless="${transaction.remarks == 'Approved'}" class="d-grid gap-2 my-3">
                 <button type="button"
-                        th:class="${transaction.remarks == 'Cancelled'} ? 'btn btn-primary disabled' : 'btn btn-primary'"
+                        th:class="${transaction.remarks == 'Cancelled' || transaction.remarks == 'Overdue'} ? 'btn btn-primary disabled' : 'btn btn-primary'"
                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Approve
                 </button>
@@ -160,7 +160,7 @@
 
             <!-- Button trigger modal -->
             <button type="button"
-                    th:class="${transaction.remarks == 'Cancelled'} ? 'btn btn-danger disabled' : 'btn btn-danger'"
+                    th:class="${transaction.remarks == 'Cancelled' || transaction.remarks == 'Overdue'} ? 'btn btn-danger disabled' : 'btn btn-danger'"
                     data-bs-toggle="modal" data-bs-target="#exampleModal2">
                 Cancel
             </button>
