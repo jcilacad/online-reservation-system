@@ -292,7 +292,7 @@ public class AdminController {
                                   Model model) {
 
         //  Get transaction by id
-        Transaction transaction =  transactionService.findById(transactionId);
+        Transaction transaction = transactionService.findById(transactionId);
 
         model.addAttribute("transaction", transaction);
 
@@ -317,7 +317,13 @@ public class AdminController {
         return "redirect:/admins/transactions/" + transactionId + "?cancel";
     }
 
+    @GetMapping("/accounts/{accountId}/transactions/{transactionId}")
+    public String viewTransactionDetails(@PathVariable Long accountId,
+                                         @PathVariable Long transactionId) {
 
+        return null;
+
+    }
 
 
 }
