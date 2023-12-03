@@ -319,9 +319,20 @@ public class AdminController {
 
     @GetMapping("/accounts/{accountId}/transactions/{transactionId}")
     public String viewTransactionDetails(@PathVariable Long accountId,
-                                         @PathVariable Long transactionId) {
+                                         @PathVariable Long transactionId,
+                                         Model model) {
 
-        return null;
+
+        // Find user by user id
+        User user = userService.findByStudentId(accountId);
+
+        // Find transaction by transaction id
+        Transaction transaction = transactionService.findById(transactionId);
+
+        model.addAttribute("student", user);
+        model.addAttribute("transaction", transaction);
+
+        return "admin/account-transaction-details";
 
     }
 
