@@ -6,6 +6,7 @@ import com.system.reservation.online.entity.Transaction;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -241,6 +242,23 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public void completeTransaction(Long transactionId) {
-        
+
+        // Get the transaction by id
+        Transaction transaction = transactionRepository
+                .findById(transactionId)
+                .orElseThrow(() -> new RuntimeException("Did not find transaction id of - " + transactionId));
+
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Set the completed date of transaction
+        transaction.setCompletedDate(currentDate.toString());
+
+        // Set the status of transaction to completed
+        transaction.setRemarks("Completed");
+
+        // Update the transaction in database
+        transactionRepository.save(transaction);
+
     }
 }
