@@ -28,11 +28,11 @@ public class Transaction {
     @Column(name = "ordering_date")
     private String orderingDate;
 
-    @Column(name = "approved_date")
-    private String approvedDate;
-
     @Column(name="completed_date")
     private String completedDate;
+
+    @Column(name = "approved_date")
+    private String approvedDate;
 
     @Column(name = "cancelled_date")
     private String cancelledDate;
@@ -52,6 +52,7 @@ public class Transaction {
     public Transaction(String receivedDate,
                        Integer quantity,
                        String orderingDate,
+                       String completedDate,
                        String approvedDate,
                        String cancelledDate,
                        String remarks,
@@ -61,6 +62,7 @@ public class Transaction {
         this.receivedDate = receivedDate;
         this.quantity = quantity;
         this.orderingDate = orderingDate;
+        this.completedDate = completedDate;
         this.approvedDate = approvedDate;
         this.cancelledDate = cancelledDate;
         this.remarks = remarks;

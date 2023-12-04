@@ -80,6 +80,7 @@ public class TransactionServiceImpl implements TransactionService{
                                                   localDate.toString(),
                                                   " --- ",
                                                   " --- ",
+                                                  " --- ",
                                                   "Pending",
                                                   user,
                                                   item);
