@@ -122,7 +122,7 @@
             </div>
         </div>
 
-        <div class="d-grid gap-2 my-3">
+        <div th:if="${transaction.remarks != 'Completed'}" class="d-grid gap-2 my-3">
 
             <div th:if="${transaction.remarks == 'Approved'}" class="d-grid gap-2 my-3">
                 <button type="button"
