@@ -31,6 +31,9 @@ public class Transaction {
     @Column(name = "approved_date")
     private String approvedDate;
 
+    @Column(name="completed_date")
+    private String completedDate;
+
     @Column(name = "cancelled_date")
     private String cancelledDate;
 
