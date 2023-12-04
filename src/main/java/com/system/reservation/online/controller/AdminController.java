@@ -308,6 +308,12 @@ public class AdminController {
         return "redirect:/admins/transactions/" + transactionId + "?approve";
     }
 
+    @PostMapping("/transactions/{transactionId}/complete")
+    public String completeTransaction(@PathVariable Long transactionId) {
+
+        return "redirect:/admins/transactions/" + transactionId + "?complete";
+    }
+
     @PostMapping("/transactions/{transactionId}/cancel")
     public String cancelTransaction(@PathVariable Long transactionId) {
 
@@ -335,6 +341,8 @@ public class AdminController {
         return "admin/account-transaction-details";
 
     }
+
+
 
 
 }

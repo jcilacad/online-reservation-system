@@ -128,7 +128,7 @@
             </button>
 
             <!-- Modal -->
-            <form method="POST" th:action="@{/admins/transactions/{transactionId}(transactionId=${transaction.id})}">
+            <form method="POST" th:action="@{/admins/transactions/{transactionId}/complete(transactionId=${transaction.id})}">
                 <div class="modal fade" id="completedModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
