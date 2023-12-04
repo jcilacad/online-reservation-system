@@ -124,14 +124,17 @@
 
         <div class="d-grid gap-2 my-3">
 
-            <button type="button"
-                    th:class="${transaction.remarks == 'Cancelled' || transaction.remarks == 'Overdue' || transaction.remarks == 'Completed'} ? 'btn btn-success disabled' : 'btn btn-success'"
-                    data-bs-toggle="modal" data-bs-target="#completedModal">
-                Completed
-            </button>
+            <div th:if="${transaction.remarks == 'Approved'}" class="d-grid gap-2 my-3">
+                <button type="button"
+                        th:class="${transaction.remarks == 'Cancelled' || transaction.remarks == 'Overdue' || transaction.remarks == 'Completed'} ? 'btn btn-success disabled' : 'btn btn-success'"
+                        data-bs-toggle="modal" data-bs-target="#completedModal">
+                    Completed
+                </button>
+            </div>
 
             <!-- Modal -->
-            <form method="POST" th:action="@{/admins/transactions/{transactionId}/complete(transactionId=${transaction.id})}">
+            <form method="POST"
+                  th:action="@{/admins/transactions/{transactionId}/complete(transactionId=${transaction.id})}">
                 <div class="modal fade" id="completedModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
@@ -152,6 +155,8 @@
                     </div>
                 </div>
             </form>
+
+
 
             <!-- Button trigger modal -->
             <div th:if="${transaction.remarks == 'Approved'}">
