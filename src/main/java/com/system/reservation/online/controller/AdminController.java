@@ -311,6 +311,9 @@ public class AdminController {
     @PostMapping("/transactions/{transactionId}/complete")
     public String completeTransaction(@PathVariable Long transactionId) {
 
+        // Complete transaction
+        transactionService.completeTransaction(transactionId);
+
         return "redirect:/admins/transactions/" + transactionId + "?complete";
     }
 

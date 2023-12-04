@@ -238,4 +238,9 @@ public class TransactionServiceImpl implements TransactionService{
 
         transactionRepository.saveAll(transactions);
     }
+
+    @Override
+    public void completeTransaction(Long transactionId) {
+        
+    }
 }

@@ -26,4 +26,6 @@ public interface TransactionService {
 
     void approveTransaction(Long transactionId);
 
+    void completeTransaction(Long transactionId);
+
 }
