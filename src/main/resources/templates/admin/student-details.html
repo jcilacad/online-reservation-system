@@ -199,6 +199,7 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Ordering Date</th>
+                    <th scope="col">Completed Date</th>
                     <th scope="col">Approved Date</th>
                     <th scope="col">Cancelled Date</th>
                     <th scope="col">Remarks</th>
@@ -209,6 +210,7 @@
                 <tr th:each="transaction : ${transactions.content}">
                     <td th:text="${transaction.id}"></td>
                     <td th:text="${transaction.orderingDate}"></td>
+                    <td th:text="${transaction.completedDate}"></td>
                     <td th:text="${transaction.approvedDate}"></td>
                     <td th:text="${transaction.cancelledDate}"></td>
                     <td th:text="${transaction.remarks}"></td>
