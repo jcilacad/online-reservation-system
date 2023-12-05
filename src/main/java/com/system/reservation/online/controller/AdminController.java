@@ -5,6 +5,7 @@ import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.Item;
 import com.system.reservation.online.entity.Transaction;
 import com.system.reservation.online.entity.User;
+import com.system.reservation.online.enums.Remark;
 import com.system.reservation.online.service.ItemService;
 import com.system.reservation.online.service.TransactionService;
 import com.system.reservation.online.service.UserService;
@@ -21,8 +22,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -280,6 +283,9 @@ public class AdminController {
             transactions = transactionService.findAllPaginated(page, 10);
         }
 
+        List<String> remarks = Arrays.asList(Arrays.toString(Remark.values()));
+
+        model.addAttribute("remarks", remarks);
         model.addAttribute("transactions", transactions);
         model.addAttribute("page", page);
 
