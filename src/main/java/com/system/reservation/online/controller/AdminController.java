@@ -277,13 +277,16 @@ public class AdminController {
         // Get all transactions
         Page<Transaction> transactions;
 
-        if (name != null) {
+        if (remark != null) {
+            transactions = transactionService.findAllByRemarks(remark, page, 10);
+        } else if (name != null) {
             // If the name is present in the @RequestParam, display students that contains the name
             transactions = transactionService.findByItemByNameContaining(name, page, 10);
         } else {
             // Otherwise, display the list of students
 //            transactions = transactionService.findAllPaginated(page, 10);
-            transactions = transactionService.findAllPaginated(page, 10);
+//            transactions = transactionService.findAllPaginated(page, 10);
+            transactions = transactionService.findAllByRemarks(remark.toString(), page, 10);
         }
 
         List<Remark> remarks = Arrays.asList(Remark.values());
@@ -354,8 +357,6 @@ public class AdminController {
         return "admin/account-transaction-details";
 
     }
-
-
 
 
 }
