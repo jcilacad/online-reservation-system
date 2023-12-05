@@ -16,7 +16,7 @@ public interface TransactionService {
     Page<Transaction> findAllPaginated(Integer currentPage, Integer pageSize);
 
     Page<Transaction> findAllPaginatedByUserId(Long id, Integer currentPage, Integer pageSize);
-    Page<Transaction> findAllByRemarks(String remark, Pageable pageable);
+    Page<Transaction> findAllByRemarks(String remarks, Integer currentPage, Integer pageSize);
 
     List<Transaction> viewTransactions ();
 

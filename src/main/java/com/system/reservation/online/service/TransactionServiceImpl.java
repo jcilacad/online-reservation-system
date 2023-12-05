@@ -140,6 +140,21 @@ public class TransactionServiceImpl implements TransactionService{
         return page;
     }
 
+    @Override
+    public Page<Transaction> findAllByRemarks(String remarks, Integer currentPage, Integer pageSize) {
+
+        List<Transaction> transactions = transactionRepository.findByRemarks(remarks);
+
+        // Ensure currentPage is not less than 0
+        currentPage = Math.max(currentPage, 0);
+
+        int start = Math.min(currentPage * pageSize, transactions.size());
+        int end = Math.min(start + pageSize, transactions.size());
+
+        Page<Transaction> page = new PageImpl<>(transactions.subList(start, end), PageRequest.of(currentPage, pageSize), transactions.size());
+
+        return page;
+    }
 
     @Override
     public Transaction findById(Long id) {
