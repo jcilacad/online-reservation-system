@@ -63,10 +63,23 @@
 
         <div class="flex-grow-1"><h3>Transactions</h3></div>
 
+
         <div>
-            <select class="form-select" aria-label="Default select example">
-                <option th:each="remark : ${remarks}" th:value="${remark}" th:text="${remark}"></option>
-            </select>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $('.form-select').change(function(){
+                        var selectedValue = $(this).val();
+                        window.location.href = `/admins/transactions?remark=${selectedValue}`;
+                    });
+                });
+            </script>
+
+            <form th:object="${remarkDto}" th:action="@{/admins/transactions/remark}" method="GET">
+                <select th:field="*{remark}" class="form-select" aria-label="Default select example">
+                    <option th:each="remark : ${remarks}" th:value="${remark}" th:text="${remark}"></option>
+                </select>
+            </form>
         </div>
 
     </div>
@@ -149,5 +162,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
         crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

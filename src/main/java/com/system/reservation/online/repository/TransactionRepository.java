@@ -16,6 +16,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
     List<Transaction> findByUser_NameContainingIgnoreCase(String name);
 
-    Page<Transaction> findAllByRemarks(String remarks, Pageable pageable);
+    List<Transaction> findByRemarks(String remarks);
 
 }

@@ -116,7 +116,6 @@ public class TransactionServiceImpl implements TransactionService{
         return transactionRepository.findAll(PageRequest.of(currentPage, pageSize));
     }
 
-
     @Override
     public Page<Transaction> findByItemByNameContaining(String name, Integer currentPage, Integer pageSize) {
         List<Transaction> transactionList = transactionRepository.findByUser_NameContainingIgnoreCase(name);

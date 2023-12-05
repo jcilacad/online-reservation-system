@@ -1,6 +1,7 @@
 package com.system.reservation.online.controller;
 
 import com.system.reservation.online.dto.ItemDto;
+import com.system.reservation.online.dto.RemarkDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.Item;
 import com.system.reservation.online.entity.Transaction;
@@ -270,6 +271,7 @@ public class AdminController {
     @GetMapping("/transactions")
     public String getTransactions(@RequestParam(defaultValue = "0") Integer page,
                                   @RequestParam(name = "name", required = false) String name,
+                                  @RequestParam(name = "remark", required = false) String remark,
                                   Model model) {
 
         // Get all transactions
@@ -280,11 +282,13 @@ public class AdminController {
             transactions = transactionService.findByItemByNameContaining(name, page, 10);
         } else {
             // Otherwise, display the list of students
+//            transactions = transactionService.findAllPaginated(page, 10);
             transactions = transactionService.findAllPaginated(page, 10);
         }
 
         List<Remark> remarks = Arrays.asList(Remark.values());
 
+        model.addAttribute("remarkDto", new RemarkDto());
         model.addAttribute("remarks", remarks);
         model.addAttribute("transactions", transactions);
         model.addAttribute("page", page);
