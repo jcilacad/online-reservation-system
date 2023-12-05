@@ -283,7 +283,7 @@ public class AdminController {
             transactions = transactionService.findAllPaginated(page, 10);
         }
 
-        List<String> remarks = Arrays.asList(Arrays.toString(Remark.values()));
+        List<Remark> remarks = Arrays.asList(Remark.values());
 
         model.addAttribute("remarks", remarks);
         model.addAttribute("transactions", transactions);
