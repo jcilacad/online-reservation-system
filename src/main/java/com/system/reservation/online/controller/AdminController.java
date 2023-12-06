@@ -272,13 +272,19 @@ public class AdminController {
     public String getTransactions(@RequestParam(defaultValue = "0") Integer page,
                                   @RequestParam(name = "name", required = false) String name,
                                   @RequestParam(name = "remark", required = false) String remark,
+                                  @RequestParam(name = "pickup", required = false) String pickupDate,
                                   Model model) {
 
         // Get all transactions
         Page<Transaction> transactions;
 
+        if (pickupDate != null) {
+            // Get the current date
+            String currentDate = LocalDate.now().toString();
 
-        if (remark != null) {
+            transactions = transactionService.findAllByReceivedDate(currentDate, page, 10);
+        }
+        else if (remark != null) {
             if (remark.equals("All")) {
                 transactions = transactionService.findAllPaginated(page, 10);
             } else {
@@ -360,6 +366,8 @@ public class AdminController {
         return "admin/account-transaction-details";
 
     }
+
+
 
 
 }
