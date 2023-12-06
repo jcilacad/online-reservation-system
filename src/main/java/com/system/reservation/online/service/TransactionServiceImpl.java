@@ -157,6 +157,23 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
+    public Page<Transaction> findAllByReceivedDate(String receivedDate, Integer currentPage, Integer pageSize) {
+
+        // Get the list of transactions by received date
+        List<Transaction> transactions = transactionRepository.findByReceivedDate(receivedDate);
+
+        // Ensure currentPage is not less than 0
+        currentPage = Math.max(currentPage, 0);
+
+        int start = Math.min(currentPage * pageSize, transactions.size());
+        int end = Math.min(start + pageSize, transactions.size());
+
+        Page<Transaction> page = new PageImpl<>(transactions.subList(start, end), PageRequest.of(currentPage, pageSize), transactions.size());
+
+        return page;
+    }
+
+    @Override
     public Transaction findById(Long id) {
 
         return transactionRepository.findById(id).
