@@ -64,7 +64,9 @@
         <div class="flex-grow-1"><h3>Transactions</h3></div>
 
         <div>
-            <button type="button" class="btn btn-info">Pickup Today</button>
+            <form th:action="@{/admins/transactions/pickup-today}" method="GET">
+                <button type="submit" class="btn btn-info">Pickup Today</button>
+            </form>
         </div>
 
 

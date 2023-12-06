@@ -18,4 +18,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
     List<Transaction> findByRemarks(String remarks);
 
+    List<Transaction> findByReceivedDate(String receivedDate);
+
 }
