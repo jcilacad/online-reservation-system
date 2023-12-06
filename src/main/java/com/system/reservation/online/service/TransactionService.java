@@ -18,6 +18,8 @@ public interface TransactionService {
     Page<Transaction> findAllPaginatedByUserId(Long id, Integer currentPage, Integer pageSize);
     Page<Transaction> findAllByRemarks(String remarks, Integer currentPage, Integer pageSize);
 
+    Page<Transaction> findAllByReceivedDate(String receivedDate, Integer currentPage, Integer pageSize);
+
     List<Transaction> viewTransactions ();
 
     void cancelTransaction(Long transactionId);
