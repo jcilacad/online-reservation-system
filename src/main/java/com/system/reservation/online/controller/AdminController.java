@@ -367,6 +367,12 @@ public class AdminController {
 
     }
 
+    @GetMapping("/report")
+    public String generateReport() {
+
+        return "admin/generate-report";
+    }
+
 
 
 
