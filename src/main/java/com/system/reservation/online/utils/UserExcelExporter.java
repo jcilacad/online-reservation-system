@@ -43,6 +43,7 @@ public class UserExcelExporter {
         createCell(row, 5, "Item Name", style);
         createCell(row, 6, "Item Size", style);
         createCell(row, 7, "Item Price", style);
+        createCell(row, 8, "Status", style);
 
     }
 
@@ -79,6 +80,7 @@ public class UserExcelExporter {
             createCell(row, columnCount++, transaction.getItem().getName().toString(), style);
             createCell(row, columnCount++, transaction.getItem().getSize().toString(), style);
             createCell(row, columnCount++, transaction.getItem().getPrice().toString(), style);
+            createCell(row, columnCount++, transaction.getRemarks().toString(), style);
         }
     }
 

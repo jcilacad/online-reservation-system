@@ -391,7 +391,7 @@ public class AdminController {
         String currentDateTime = dateFormatter.format(new Date());
 
         String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=users_" + currentDateTime + ".xlsx";
+        String headerValue = "attachment; filename=transactions_" + remark + "_"  + currentDateTime + ".xlsx";
         response.setHeader(headerKey, headerValue);
 
         List<Transaction> transactions;
