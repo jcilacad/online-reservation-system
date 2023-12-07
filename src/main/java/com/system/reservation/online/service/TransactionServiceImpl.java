@@ -298,4 +298,9 @@ public class TransactionServiceImpl implements TransactionService{
     public List<Transaction> findByRemark(String remark) {
         return transactionRepository.findByRemarks(remark);
     }
+
+    @Override
+    public List<Transaction> findByUserEmail(String email) {
+        return transactionRepository.findByUser_email(email);
+    }
 }

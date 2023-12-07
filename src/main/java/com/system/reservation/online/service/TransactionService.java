@@ -34,4 +34,6 @@ public interface TransactionService {
 
     List<Transaction> findByRemark(String remark);
 
+    List<Transaction> findByUserEmail(String email);
+
 }
