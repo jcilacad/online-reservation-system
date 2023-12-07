@@ -11,6 +11,8 @@ import com.system.reservation.online.service.ItemService;
 import com.system.reservation.online.service.TransactionService;
 import com.system.reservation.online.service.UserService;
 import com.system.reservation.online.utils.FileUploadUtil;
+import com.system.reservation.online.utils.UserExcelExporter;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,9 +26,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -368,9 +373,32 @@ public class AdminController {
     }
 
     @GetMapping("/report")
-    public String generateReport() {
+    public String viewReportPage(Model model) {
+
+
+        List<Remark> remarks = Arrays.asList(Remark.values());
+
+        model.addAttribute("remarks", remarks);
+        model.addAttribute("remarkDto", new RemarkDto());
 
         return "admin/generate-report";
+    }
+
+    @GetMapping("/admins/export/excel")
+    public void exportToExcel(@RequestParam("remark") String remark, HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+
+        List<Transaction> transactions = transactionService.findByRemark(remark);
+
+        UserExcelExporter excelExporter = new UserExcelExporter(transactions);
+
+        excelExporter.export(response);
     }
 
 
