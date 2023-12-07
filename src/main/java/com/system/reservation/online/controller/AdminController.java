@@ -394,7 +394,14 @@ public class AdminController {
         String headerValue = "attachment; filename=users_" + currentDateTime + ".xlsx";
         response.setHeader(headerKey, headerValue);
 
-        List<Transaction> transactions = transactionService.findByRemark(remark.toString());
+        List<Transaction> transactions;
+
+        if (remark.equals("All")) {
+            transactions = transactionService.getAllTransactions();
+        } else {
+            transactions = transactionService.findByRemark(remark.toString());
+        }
+
 
         UserExcelExporter excelExporter = new UserExcelExporter(transactions);
 
