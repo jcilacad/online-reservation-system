@@ -66,8 +66,26 @@
         <div class="d-grid gap-2 my-3">
             <button class="btn btn-primary" type="submit">Generate</button>
         </div>
-    </form>
 
+        <div>
+            <h4 class="text-center">OR</h4>
+        </div>
+
+        <div>
+            <form action="@{/admins/export/excel" method="GET">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Student Email"
+                           aria-label="Recipient's username" aria-describedby="button-addon2">
+
+                </div>
+                <div class="d-grid gap-2 my-3">
+                    <button class="btn btn-primary" type="submit">Generate</button>
+                </div>
+
+            </form>
+
+        </div>
+    </form>
 
 
 </div>
