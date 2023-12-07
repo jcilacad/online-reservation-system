@@ -293,4 +293,9 @@ public class TransactionServiceImpl implements TransactionService{
         transactionRepository.save(transaction);
 
     }
+
+    @Override
+    public List<Transaction> findByRemark(String remark) {
+        return transactionRepository.findByRemarks(remark);
+    }
 }

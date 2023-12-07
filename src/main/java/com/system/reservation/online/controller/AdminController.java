@@ -384,7 +384,7 @@ public class AdminController {
         return "admin/generate-report";
     }
 
-    @GetMapping("/admins/export/excel")
+    @GetMapping("/export/excel")
     public void exportToExcel(@RequestParam("remark") String remark, HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
@@ -394,7 +394,7 @@ public class AdminController {
         String headerValue = "attachment; filename=users_" + currentDateTime + ".xlsx";
         response.setHeader(headerKey, headerValue);
 
-        List<Transaction> transactions = transactionService.findByRemark(remark);
+        List<Transaction> transactions = transactionService.findByRemark(remark.toString());
 
         UserExcelExporter excelExporter = new UserExcelExporter(transactions);
 

@@ -32,4 +32,6 @@ public interface TransactionService {
 
     void completeTransaction(Long transactionId);
 
+    List<Transaction> findByRemark(String remark);
+
 }

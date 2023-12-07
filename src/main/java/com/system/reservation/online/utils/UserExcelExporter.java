@@ -71,14 +71,14 @@ public class UserExcelExporter {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
 
-            createCell(row, columnCount++, transaction.getId(), style);
+            createCell(row, columnCount++, transaction.getId().toString(), style);
             createCell(row, columnCount++, transaction.getOrderingDate().toString(), style);
             createCell(row, columnCount++, transaction.getReceivedDate().toString(), style);
-            createCell(row, columnCount++, transaction.getUser().getName(), style);
-            createCell(row, columnCount++, transaction.getUser().getEmail(), style);
-            createCell(row, columnCount++, transaction.getItem().getName(), style);
-            createCell(row, columnCount++, transaction.getItem().getSize(), style);
-            createCell(row, columnCount++, transaction.getItem().getPrice(), style);
+            createCell(row, columnCount++, transaction.getUser().getName().toString(), style);
+            createCell(row, columnCount++, transaction.getUser().getEmail().toString(), style);
+            createCell(row, columnCount++, transaction.getItem().getName().toString(), style);
+            createCell(row, columnCount++, transaction.getItem().getSize().toString(), style);
+            createCell(row, columnCount++, transaction.getItem().getPrice().toString(), style);
         }
     }
 
