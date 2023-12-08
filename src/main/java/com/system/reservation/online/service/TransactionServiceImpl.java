@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TransactionServiceImpl implements TransactionService{
+public class TransactionServiceImpl implements TransactionService {
 
     private UserService userService;
     private ItemService itemService;
@@ -76,14 +76,14 @@ public class TransactionServiceImpl implements TransactionService{
 
         // Initialize transaction
         Transaction transaction = new Transaction(receivedDate,
-                                                  reserveItem,
-                                                  localDate.toString(),
-                                                  " --- ",
-                                                  " --- ",
-                                                  " --- ",
-                                                  "Pending",
-                                                  user,
-                                                  item);
+                reserveItem,
+                localDate.toString(),
+                " --- ",
+                " --- ",
+                " --- ",
+                "Pending",
+                user,
+                item);
 
 
         // Save transaction in database
@@ -177,7 +177,7 @@ public class TransactionServiceImpl implements TransactionService{
     public Transaction findById(Long id) {
 
         return transactionRepository.findById(id).
-                orElseThrow(()-> new RuntimeException("Didn't find id - " + id));
+                orElseThrow(() -> new RuntimeException("Didn't find id - " + id));
     }
 
     @Override
@@ -253,19 +253,21 @@ public class TransactionServiceImpl implements TransactionService{
         // Make the transaction overdue if the ordering date
         transactions.stream()
                 .forEach(transaction -> {
-                    // Convert string to LocalDate
-                    LocalDate pickUpDate = LocalDate.parse(transaction.getReceivedDate(), formatter);
-                    if (pickUpDate.isBefore(currentDate)) {
-                        transaction.setRemarks("Overdue");
+                    if (!transaction.getRemarks().equals("Completed")) {
+                        // Convert string to LocalDate
+                        LocalDate pickUpDate = LocalDate.parse(transaction.getReceivedDate(), formatter);
+                        if (pickUpDate.isBefore(currentDate)) {
+                            transaction.setRemarks("Overdue");
 
-                        // Get the current item
-                        Item item = transaction.getItem();
+                            // Get the current item
+                            Item item = transaction.getItem();
 
-                        // Get the number of ordered items
-                        Integer quantity = transaction.getQuantity();
+                            // Get the number of ordered items
+                            Integer quantity = transaction.getQuantity();
 
-                        // Bring back the ordered items to the stock of items
-                        item.setQuantity(item.getQuantity() + quantity);
+                            // Bring back the ordered items to the stock of items
+                            item.setQuantity(item.getQuantity() + quantity);
+                        }
                     }
                 });
 
