@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -162,13 +163,18 @@ public class TransactionServiceImpl implements TransactionService {
         // Get the list of transactions by received date
         List<Transaction> transactions = transactionRepository.findByReceivedDate(receivedDate);
 
+        List<Transaction> filteredTransactions = transactions
+                .stream()
+                .filter(transaction -> transaction.equals("Approved") || transaction.equals("Pending"))
+                .collect(Collectors.toList());
+
         // Ensure currentPage is not less than 0
         currentPage = Math.max(currentPage, 0);
 
-        int start = Math.min(currentPage * pageSize, transactions.size());
-        int end = Math.min(start + pageSize, transactions.size());
+        int start = Math.min(currentPage * pageSize, filteredTransactions.size());
+        int end = Math.min(start + pageSize, filteredTransactions.size());
 
-        Page<Transaction> page = new PageImpl<>(transactions.subList(start, end), PageRequest.of(currentPage, pageSize), transactions.size());
+        Page<Transaction> page = new PageImpl<>(filteredTransactions.subList(start, end), PageRequest.of(currentPage, pageSize), filteredTransactions.size());
 
         return page;
     }
