@@ -163,9 +163,9 @@ public class TransactionServiceImpl implements TransactionService {
         // Get the list of transactions by received date
         List<Transaction> transactions = transactionRepository.findByReceivedDate(receivedDate);
 
-        List<Transaction> filteredTransactions = transactions
-                .stream()
-                .filter(transaction -> transaction.equals("Approved") || transaction.equals("Pending"))
+        // Get only a transaction with status of Pending or Approved
+        List<Transaction> filteredTransactions = transactions.stream()
+                .filter(transaction -> transaction.getRemarks().equals("Pending") || transaction.getRemarks().equals("Approved"))
                 .collect(Collectors.toList());
 
         // Ensure currentPage is not less than 0
