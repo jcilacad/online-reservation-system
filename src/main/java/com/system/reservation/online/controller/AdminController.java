@@ -386,9 +386,9 @@ public class AdminController {
     }
 
     @GetMapping("/export/excel")
-    public void exportToExcel(@RequestParam(value = "remark", required = false) String remark,
-                              @RequestParam(value = "email", required = false) String email,
-                              HttpServletResponse response) throws IOException {
+    public String exportToExcel(@RequestParam(value = "remark", required = false) String remark,
+                                @RequestParam(value = "email", required = false) String email,
+                                HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
@@ -400,6 +400,12 @@ public class AdminController {
 
         if (email != null) {
             headerValue = "attachment; filename=transactions_" + email + "_" + currentDateTime + ".xlsx";
+
+            User user = userService.findUserByEmail(email);
+
+            if (user == null) {
+                return "redirect:/admins/report?error";
+            }
             transactions = transactionService.findByUserEmail(email);
         } else {
             headerValue = "attachment; filename=transactions_" + remark + "_" + currentDateTime + ".xlsx";
@@ -415,6 +421,8 @@ public class AdminController {
         UserExcelExporter excelExporter = new UserExcelExporter(transactions);
 
         excelExporter.export(response);
+
+        return "redirect:/admins/report";
     }
 
 
