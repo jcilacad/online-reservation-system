@@ -57,6 +57,10 @@
 
     <h1>Report</h1>
 
+    <div th:if="${param.error}" class="alert alert-danger" role="alert">
+        Email does not exists!
+    </div>
+
     <form th:object="${remarkDto}" th:action="@{/admins/export/excel}" method="GET">
 
         <select th:field="*{remark}" class="form-select my-3" aria-label="Default select example">
