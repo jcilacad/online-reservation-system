@@ -55,11 +55,11 @@
 
 <div class="container" style="margin-top: 80px">
 
+    <div class="d-flex mb-3">
 
     <a th:href="@{/admins/transactions}" type="button" class="btn btn-info mb-4">Back</a>
+    <a th:href="@{/admins/transactions}" type="button" class="btn btn-danger mb-4 ms-auto">Delete</a>
 
-    <div th:if="${param.complete}" class="alert alert-success" role="alert">
-        Successfully completed a transaction
     </div>
 
     <div th:if="${param.approve}" class="alert alert-success" role="alert">
@@ -155,7 +155,6 @@
                     </div>
                 </div>
             </form>
-
 
 
             <!-- Button trigger modal -->
