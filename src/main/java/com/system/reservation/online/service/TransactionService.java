@@ -36,4 +36,6 @@ public interface TransactionService {
 
     List<Transaction> findByUserEmail(String email);
 
+    void deleteTransaction(Long transactionId);
+
 }

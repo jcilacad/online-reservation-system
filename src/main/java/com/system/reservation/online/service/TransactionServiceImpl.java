@@ -311,4 +311,14 @@ public class TransactionServiceImpl implements TransactionService {
     public List<Transaction> findByUserEmail(String email) {
         return transactionRepository.findByUser_email(email);
     }
+
+    @Override
+    public void deleteTransaction(Long transactionId) {
+
+        Transaction transaction = transactionRepository.findById(transactionId)
+                .orElseThrow(() -> new RuntimeException("Transaction id - " + transactionId + " not found"));
+
+
+        transactionRepository.delete(transaction);
+    }
 }

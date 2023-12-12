@@ -335,6 +335,14 @@ public class AdminController {
         return "redirect:/admins/transactions/" + transactionId + "?approve";
     }
 
+    @DeleteMapping("/transactions/{transactionId}")
+    public String deleteTransaction(@PathVariable Long transactionId) {
+
+        transactionService.deleteTranasaction(transactionId);
+        return "redirect:/transactions";
+
+    }
+
     @PostMapping("/transactions/{transactionId}/complete")
     public String completeTransaction(@PathVariable Long transactionId) {
 
