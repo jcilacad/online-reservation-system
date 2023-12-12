@@ -338,8 +338,8 @@ public class AdminController {
     @DeleteMapping("/transactions/{transactionId}")
     public String deleteTransaction(@PathVariable Long transactionId) {
 
-        transactionService.deleteTranasaction(transactionId);
-        return "redirect:/transactions";
+        transactionService.deleteTransaction(transactionId);
+        return "redirect:/admins/transactions?deleted";
 
     }
 

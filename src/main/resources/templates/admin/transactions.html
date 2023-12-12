@@ -58,6 +58,10 @@
 
     <a th:href="@{/admins/dashboard}" type="button" class="btn btn-info mb-4">Back</a>
 
+    <div th:if="${param.deleted}" class="alert alert-success" role="alert">
+        Transaction deleted successfully!
+    </div>
+
     <div class="d-flex">
 
 
