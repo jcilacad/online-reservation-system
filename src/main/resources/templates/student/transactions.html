@@ -57,6 +57,19 @@
     <a th:href="@{/students/dashboard}" type="button" class="btn btn-info mb-4">Back</a>
     <h1>Transactions</h1>
 
+    <form th:object="${remarkDto}" th:action="@{/admins/export/excel}" method="GET">
+
+        <select th:field="*{remark}" class="form-select my-3" aria-label="Default select example">
+            <option th:each="remarkValue : ${remarks}" th:value="${remarkValue}" th:text="${remarkValue}"></option>
+        </select>
+
+        <div class="d-grid gap-2 my-3">
+            <button class="btn btn-primary" type="submit">Generate</button>
+        </div>
+
+
+    </form>
+
     <div class="container table-responsive" style="margin-top: 20px">
 
         <table class="table">
