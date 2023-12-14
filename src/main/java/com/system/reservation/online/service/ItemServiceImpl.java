@@ -4,6 +4,7 @@ import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.entity.Item;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.repository.ItemRepository;
+import com.system.reservation.online.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -17,9 +18,12 @@ public class ItemServiceImpl implements ItemService{
 
     private ItemRepository itemRepository;
 
+    private TransactionRepository transactionRepository;
+
     @Autowired
-    public ItemServiceImpl(ItemRepository itemRepository) {
+    public ItemServiceImpl(ItemRepository itemRepository, TransactionRepository transactionRepository) {
         this.itemRepository = itemRepository;
+        this.transactionRepository = transactionRepository;
     }
 
     @Override
@@ -96,6 +100,13 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public void deleteById(Long id) {
 
-        itemRepository.deleteById(id);
+        Item item = itemRepository.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("Did not find id - " + id
+            );
+        });
+
+        transactionRepository.deleteAll(item.getTransactions());
+
+        itemRepository.delete(item);
     }
 }
