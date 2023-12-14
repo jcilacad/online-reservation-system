@@ -57,7 +57,7 @@
     <a th:href="@{/students/dashboard}" type="button" class="btn btn-info mb-4">Back</a>
     <h1>Transactions</h1>
 
-    <form th:object="${remarkDto}" th:action="@{/admins/export/excel}" method="GET">
+    <form th:object="${remarkDto}" th:action="@{/students/export/excel}" method="GET">
 
         <select th:field="*{remark}" class="form-select my-3" aria-label="Default select example">
             <option th:each="remarkValue : ${remarks}" th:value="${remarkValue}" th:text="${remarkValue}"></option>
