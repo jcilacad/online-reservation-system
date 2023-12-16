@@ -127,8 +127,8 @@ public class AdminController {
 
         // Get transactions
         Page<Transaction> transactions = transactionService.findAllPaginatedByUserId(student.getId(), page, 10);
-        
-        boolean isAdmin = student.getRoles().stream().anyMatch(role -> role.getName().equals("ADMIN"));
+
+        boolean isAdmin = student.getRoles().stream().anyMatch(role -> role.getName().equals("ROLE_ADMIN"));
 
         model.addAttribute("isAdmin", isAdmin);
         model.addAttribute("transactions", transactions);
