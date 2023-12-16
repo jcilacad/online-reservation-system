@@ -5,6 +5,7 @@ import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.dto.RemarkDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.Item;
+import com.system.reservation.online.entity.Role;
 import com.system.reservation.online.entity.Transaction;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.enums.Remark;
@@ -124,10 +125,12 @@ public class AdminController {
         // Map user object to Dto
         UserDto studentDto = userService.mapUserToDto(student);
 
-
         // Get transactions
         Page<Transaction> transactions = transactionService.findAllPaginatedByUserId(student.getId(), page, 10);
+        
+        boolean isAdmin = student.getRoles().stream().anyMatch(role -> role.getName().equals("ADMIN"));
 
+        model.addAttribute("isAdmin", isAdmin);
         model.addAttribute("transactions", transactions);
         model.addAttribute("page", page);
 
