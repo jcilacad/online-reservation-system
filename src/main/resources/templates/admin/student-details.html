@@ -118,7 +118,7 @@
 
                             <input type="hidden" name="_method" value="update">
                             <div class="mb-3">
-                                <label for="studentNumber" class="col-form-label">Student Number:</label>
+                                <label for="studentNumber" class="col-form-label">ID Number:</label>
                                 <input type="text" th:value="${studentDto.studentNumber}" name="studentNumber"
                                        class="form-control" id="studentNumber">
                                 <p th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"
@@ -126,7 +126,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="email" class="col-form-label">Email address:</label>
+                                <label for="email" class="col-form-label">Email Address:</label>
                                 <input th:value="${studentDto.email}" type="email" class="form-control" name="email"
                                        id="email">
                                 <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
