@@ -16,9 +16,9 @@ These instructions will get you a copy of the project up and running on your loc
 1. **Clone the project**
 
    Use the following command to clone the project:
-
+```
 git clone git@github.com:jcilacad/reservation-system.git
-
+```
 
 2. **Create a database**
 
@@ -28,15 +28,17 @@ CREATE DATABASE reservation_system;
 ```
 
 3. Update application.properties Navigate to the application.properties file in the project directory and update the username and password fields with your MariaDB server credentials:
-
+```
 spring.datasource.username=root
 spring.datasource.password=password
+```
 
-4. Update AdminSeeder class Navigate to the AdminSeeder class located at src/main/java/com/system/reservation/online/bootstrap/ and update the admin credentials as needed. (The name must have a middle name, follow the format in the code)
+3. Update AdminSeeder class Navigate to the AdminSeeder class located at src/main/java/com/system/reservation/online/bootstrap/ and update the admin credentials as needed. (The name must have a middle name, follow the format in the code)
 
-5. Start the application Use Maven to start the application:
+4. Start the application Use Maven to start the application:
+```
 mvn spring-boot:run
-
+```
 
 ## Demo
 
