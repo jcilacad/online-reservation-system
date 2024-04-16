@@ -15,7 +15,6 @@ public class UserDto {
 
     private Long id;
 
-    @NotEmpty
     private String studentNumber;
 
     @NotEmpty

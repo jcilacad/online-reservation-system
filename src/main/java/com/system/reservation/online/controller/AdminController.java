@@ -5,7 +5,6 @@ import com.system.reservation.online.dto.ItemDto;
 import com.system.reservation.online.dto.RemarkDto;
 import com.system.reservation.online.dto.UserDto;
 import com.system.reservation.online.entity.Item;
-import com.system.reservation.online.entity.Role;
 import com.system.reservation.online.entity.Transaction;
 import com.system.reservation.online.entity.User;
 import com.system.reservation.online.enums.Remark;
@@ -18,7 +17,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -27,11 +25,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -102,7 +98,6 @@ public class AdminController {
 
         // Error handler if there's empty field
         if (result.hasErrors()) {
-            System.out.println("May error");
             model.addAttribute("userDto", userDto);
             return "admin/account";
         }
@@ -144,7 +139,6 @@ public class AdminController {
     @PutMapping("/accounts/{studentId}")
     public String updateStudentDetails(@PathVariable Long studentId,
                                        @ModelAttribute("studentDto") UserDto userDto) {
-
 
         // Update student details
         userService.updateStudentDetailsById(studentId, userDto);
@@ -189,7 +183,6 @@ public class AdminController {
 
         // Initialize itemDto
         ItemDto itemDto = new ItemDto();
-
 
         model.addAttribute("itemDto", itemDto);
 

@@ -18,14 +18,14 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
 
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "student_number", nullable = false, unique = true)
+    @Column(name = "student_number")
     private String studentNumber;
 
     @Column(name = "name", nullable = false)
